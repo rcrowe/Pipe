@@ -104,9 +104,16 @@ $users = $pipe->table('blunder', 'users');
 
 
 //Now lets delete them
-$users->clear();
-$users->where('email')->like('work%')->get();
-$users->delete();
+// $users->clear();
+// $users->where('email')->like('work%')->get();
+// $users->delete();
 
+$sessions = $pipe->table('blunder', 'sessions');
+
+$sessions->get();
+
+print_r($sessions->all);
+
+$sessions->delete();
 
 ?>
