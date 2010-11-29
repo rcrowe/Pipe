@@ -29,22 +29,47 @@ $pipe->table('blunder', 'users');
 // }
 
 /* EXAMPLE 2 */
-$users->get_where(array(
-    'email' => 'robert.crowe@thalesgroup.com',
-    'last_name' => 'eas'
-));
+// $users->get_where(array(
+    // 'last_name' => 'eas'
+// ));
 
-if($users->exists())
-{
-    // print_r($users->all);
-    
-    echo "Email: ".$users->first_name."\n\n";
+// if($users->exists())
+// {
+    // echo "First Name: ".$users->first_name."\n\n";
         
-    $users->email    = 'robert@thalesgroup.com';
-    $users->username = 'bels';
+    // $users->first_name = 'cow';
     
-    $users->save();
+    // $users->save();
     
-}
+    // echo "First Name: ".$users->first_name."\n\n";
+// }
+
+
+/* Example 3 */
+//Create a new user
+
+// $users->clear(); //best to make sure
+
+// $users->email      = 'cow@moo.com';
+// $users->username   = 'crab';
+// $users->password   = sha1('sdfgmnk1234');
+// $users->first_name = 'Alien';
+
+// $users->save();
+
+// echo "Last insert: ".$users->id;
+
+
+
+//Test with new table
+$errors = $pipe->table('blunder', 'errors');
+
+$errors->project_id = 12;
+$errors->hash       = sha1($errors->project_id);
+$errors->parent_id  = 45;
+
+$errors->save();
+
+echo "ID: ".$errors->id;
 
 ?>

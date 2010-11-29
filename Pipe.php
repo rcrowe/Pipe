@@ -325,11 +325,16 @@ class PipeTable
                 }
             }
             
+            //Check we have something to change
+            if(count($set) === 0)
+            {
+                return;
+            }
+            
             //Build query
             $set_str  = implode(',', $set);
             
             $query = sprintf("UPDATE ".$this->table." SET $set_str WHERE id=".$this->id);
-            
             
             //lets GO!
             $result = @mysql_query($query);
@@ -338,6 +343,47 @@ class PipeTable
             {
                 throw new Exception("Error: ".mysql_error());
             }
+            
+            $this->refresh_store();
+        }
+        else
+        {
+            //Create new record - INSERT
+            
+            $colomns = array();
+            $values  = array();
+            
+            //Get the data that has changed
+            foreach($this->fields as $field)
+            {
+                if($this->{$field} !== $this->store[$field])
+                {
+                    $colomns[] = $field;
+                    $values[]  = '\''.$this->{$field}.'\'';
+                }
+            }
+            
+            //Check we have something to change
+            if(count($colomns) === 0)
+            {
+                return;
+            }
+            
+            $col_str = sprintf("(%s)", implode(',', $colomns));
+            $val_str = sprintf("(%s)", implode(',', $values));
+            
+            $query = sprintf("INSERT INTO %s (%s) VALUES (%s)", $this->table, implode(',', $colomns), implode(',', $values));
+            
+            //lets GO!
+            $result = @mysql_query($query);
+            
+            if(!$result)
+            {
+                throw new Exception("Error: ".mysql_error());
+            }
+            
+            //Set the ID from the INSERT
+            $this->id = mysql_insert_id();
             
             $this->refresh_store();
         }
