@@ -82,6 +82,9 @@ class PipeTable
     //Holds results
     public $all = array();
     
+    //Holds count of records from last request
+    public $count;
+    
     //Holds copy of existing data to check for changes against
     private $store;
     
@@ -247,8 +250,45 @@ class PipeTable
         //Handle OFFSET
         $query .= (strlen($this->offset_str) > 0) ? $this->offset_str.' ' : '';
         
-        echo $query;
+        
+        
+        /////////////////////////////////////////
+        //echo $query."\n";
+        /////////////////////////////////////////
+        
+        
+        
+        $result = @mysql_query($query);
+        
+        if(!$result)
+        {
+            throw new Exception("Error: ".mysql_error());
+        }
+        
+        if(mysql_num_rows($result) > 0)
+        {
+            while($row = mysql_fetch_assoc($result))
+            {
+                $this->all[] = $row;
+            }
+            
+            //Fill first result
+            foreach($this->all[0] as $key => $value)
+            {
+                $this->{$key} = $value;
+            }
+        }
     }
+    
+    public function count()
+    {
+        return count($this->all);
+    }
+    
+    public function exists()
+	{
+		return (!empty($this->id));
+	}
 }
 
 ?>
