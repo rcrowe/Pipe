@@ -1,17 +1,12 @@
 <?php
 
-require_once 'Pipe.php';
+require 'Pipe.php';
 
 $pipe = Pipe::connect('localhost', 'root', 'root');
-$pipe->table('blunder', 'users');
+$users = $pipe->table('blunder', 'users');
 
-// print_r($pipe->fields);
+$users->select('id,name,age')->where('id', 2)->get();
 
-$pipe->get_by_id(2);
-
-if($pipe->exists())
-{
-    echo $pipe->first_name;
-}
+// $users->get();
 
 ?>

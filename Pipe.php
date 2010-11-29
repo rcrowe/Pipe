@@ -2,16 +2,8 @@
 
 class Pipe
 {
-    private $db;               //MySQL connection
-    private $table;            //Selected table
-    
-    public $fields = array(); //List of fields for selected table
-    public $all;              //Holds array of all results
-    
-    //Used for build query string
-    private $query_str;
-    private $where_str;
-    
+    private $db; //MySQL connection
+
     private function __construct($db)
     {
         if(!$db)
@@ -56,11 +48,19 @@ class Pipe
         }
         
         //Get information on table
+        $fields = array();
+        
         if(mysql_num_rows($result) > 0)
         {
             while($row = mysql_fetch_assoc($result))
             {
-                $this->fields[] = $row['Field'];
+                $fields[] = $row['Field'];
+            }
+            
+            //Make sure it has an ID field
+            if(!in_array('id', $fields))
+            {
+                throw new Exception("Table `$table` must contain an ID coloumn");
             }
         }
         else
@@ -68,34 +68,71 @@ class Pipe
             throw new Exception('Unable to get information on table: '.$table);
         }
         
-        //Set table name using
-        $this->table = $table;
+        //Return instance of table
+        return new PipeTable($this->db, $table, $fields);
+    }
+}
+
+class PipeTable
+{
+    private $db;     //DB instance
+    private $table;  //Table name
+    private $fields; //Fields table holds
+    
+    //Holds results
+    public $all = array();
+    
+    //Holds copy of existing data to check for changes against
+    private $store;
+    
+    //Strings for building query
+    private $select_str;
+    private $where_str;
+
+    public function __construct($db, $table, $fields)
+    {
+        $this->db     = $db;
+        $this->table  = $table;
+        $this->fields = $fields;
     }
     
-    //Handles get_by_* calls
-    public function __call($method, $arguments)
+    public function clear()
     {
-        if(strpos($method, 'get_by_') !== FALSE)
+        $this->all = array();
+        
+        foreach($this->fields as $field)
         {
-            list($blank, $field) = explode('get_by_', $method);
-            
-            if(!in_array($field, $this->fields))
-            {
-                throw new Exception("Unable to find field: $field");
-            }
-            
-            //Perform query
-            if(isset($arguments[0]))
-            {
-                $this->where($field, $arguments[0], 'AND');
-            }
-            
-            return $this->get(); 
+            $this->{$field} = NULL;
+        }
+        
+        $this->refresh_store();
+    }
+    
+    //Takes a copy of stored data to check for changes against it
+    private function refresh_store()
+    {
+        foreach($this->fields as $field)
+        {
+            $this->store[$field] = $this->{$field};
         }
     }
     
-    //Builds the WHERE section of query
-    public function where($field, $value, $type)
+    public function select($select)
+    {
+        if(is_array($select))
+        {
+            $this->select_str .= implode(',', $select);
+        }
+        else
+        {
+            $this->select_str .= $select;
+        }
+        
+        //So we can chain
+        return $this;
+    }
+    
+    public function where($field, $value, $type = 'AND')
     {
         if(strlen($this->where_str) > 0)
         {
@@ -103,47 +140,31 @@ class Pipe
         }
         else
         {
-            $this->where_str .= "WHERE ";
+            $this->where_str .= 'WHERE ';
         }
         
         $this->where_str .= "$field=$value";
+        
+        return $this;
     }
     
     public function get()
     {
-        //Clear the object
+        $this->clear();
         
         //Build query
-        $query = "SELECT * FROM ".$this->table." ";
+        $query = "SELECT ";
         
-        if(strlen($this->where_str) > 0)
-        {
-            $query .= $this->where_str;
-        }
+        //Handle SELECT
+        $query .= (strlen($this->select_str) > 0) ? $this->select_str : '*';
         
-        $result = @mysql_query($query);
+        $query .= sprintf(" %s %s ", 'FROM', $this->table);
         
-        if(!$result)
-        {
-            throw new Exception("Error: ".mysql_error());
-        }
+        //Handle WHERE
+        $query .= (strlen($this->where_str) > 0) ? $this->where_str : '';
         
-        if(mysql_num_rows($result) > 0)
-        {
-            $this->all = mysql_fetch_assoc($result);
-            
-            //Fill last result
-            foreach($this->all as $key => $value)
-            {
-                $this->{$key} = $value;
-            }
-        }
+        echo $query;
     }
-    
-    function exists()
-	{
-		return ( ! empty($this->id));
-	}
 }
 
 ?>
