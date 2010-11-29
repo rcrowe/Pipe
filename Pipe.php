@@ -4,7 +4,9 @@ class Pipe
 {
     private $db;               //MySQL connection
     private $table;            //Selected table
-    public  $fields = array(); //List of fields for selected table
+    
+    public $fields = array(); //List of fields for selected table
+    public $all;              //Holds array of all results
     
     //Used for build query string
     private $query_str;
@@ -128,31 +130,20 @@ class Pipe
         
         if(mysql_num_rows($result) > 0)
         {
-            return mysql_fetch_assoc($result);
-            // while($row = mysql_fetch_assoc($result))
-            // {
-                // $this->fields[] = $row['Field'];
-            // }
-        }
-        
-        /*
-        $result = @mysql_query("SHOW COLUMNS FROM $table");
-        
-        if(!$result)
-        {
-            throw new Exception("Error: ".mysql_error());
-        }
-        
-        //Get information on table
-        if(mysql_num_rows($result) > 0)
-        {
-            while($row = mysql_fetch_assoc($result))
+            $this->all = mysql_fetch_assoc($result);
+            
+            //Fill last result
+            foreach($this->all as $key => $value)
             {
-                $this->fields[] = $row['Field'];
+                $this->{$key} = $value;
             }
         }
-        */
     }
+    
+    function exists()
+	{
+		return ( ! empty($this->id));
+	}
 }
 
 ?>
