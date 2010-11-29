@@ -311,27 +311,25 @@ class PipeTable
     
     public function save()
     {
-        $colomns = array();
-        $values  = array();
-    
         if(!is_null($this->id))
         {
+            //Used to build UPDATE query
+            $set = array();
+        
             //Get the data that has changed
             foreach($this->fields as $field)
             {
                 if($this->{$field} !== $this->store[$field])
                 {
-                    $colomns[] = "$field";
-                    $values[]  = $this->{$field};
+                    $set[] = $field.'=\''.$this->{$field}.'\'';
                 }
             }
             
-            $col_str  = '('.implode(',', $colomns).')';
-            $val_str  = '('.implode(',', $values).')';
+            //Build query
+            $set_str  = implode(',', $set);
             
-            $query = sprintf("INSERT INTO %s %s VALUES %s", $this->table, $col_str, $val_str);
+            $query = sprintf("UPDATE ".$this->table." SET $set_str WHERE id=".$this->id);
             
-            echo $query;
             
             //lets GO!
             $result = @mysql_query($query);

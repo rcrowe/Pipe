@@ -30,7 +30,7 @@ $pipe->table('blunder', 'users');
 
 /* EXAMPLE 2 */
 $users->get_where(array(
-    'email' => 'test@test.com',
+    'email' => 'robert.crowe@thalesgroup.com',
     'last_name' => 'eas'
 ));
 
@@ -40,8 +40,8 @@ if($users->exists())
     
     echo "Email: ".$users->first_name."\n\n";
         
-    $users->email    = 'robert.crowe@thalesgroup.com';
-    $users->username = 'crowe';
+    $users->email    = 'robert@thalesgroup.com';
+    $users->username = 'bels';
     
     $users->save();
     
