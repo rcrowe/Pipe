@@ -88,6 +88,10 @@ class PipeTable
     //Strings for building query
     private $select_str;
     private $where_str;
+    private $like_str;
+    private $orderby_str;
+    private $limit_str;
+    private $offset_str;
 
     public function __construct($db, $table, $fields)
     {
@@ -99,6 +103,13 @@ class PipeTable
     public function clear()
     {
         $this->all = array();
+        
+        $this->select_str = NULL;
+        $this->where_str = NULL;
+        $this->like_str = NULL;
+        $this->orderby_str = NULL;
+        $this->limit_str = NULL;
+        $this->offset_str = NULL;
         
         foreach($this->fields as $field)
         {
@@ -132,26 +143,87 @@ class PipeTable
         return $this;
     }
     
-    public function where($field, $value, $type = 'AND')
+    public function where($field, $value = NULL, $type = 'AND')
     {
         if(strlen($this->where_str) > 0)
         {
-            $this->where_str .= $type.' ';
+            $this->where_str .= " $type ";
         }
         else
         {
             $this->where_str .= 'WHERE ';
         }
         
-        $this->where_str .= "$field=$value";
+        if($value !== NULL)
+        {
+            $this->where_str .= "$field='$value'";
+        }
+        else
+        {
+            $this->where_str .= "$field";
+        }
         
+        //So we can chain
         return $this;
+    }
+    
+    public function like($field)
+    {
+        $this->like_str = "LIKE '$field'";
+        
+        //So we can chain
+        return $this;
+    }
+    
+    public function order_by($field, $direction = 'ASC')
+    {
+        $dir = (strtoupper($direction) == 'ASC') ? 'ASC' : 'DESC';
+        $this->orderby_str = "ORDER BY '$field' $dir";
+        
+        //So we can chain
+        return $this;
+    }
+    
+    public function limit($num)
+    {
+        $this->limit_str = "LIMIT '$num'";
+        
+        //So we can chain
+        return $this;
+    }
+    
+    public function offset($num)
+    {
+        $this->offset_str = "OFFSET '$num'";
+        
+        //So we can chain
+        return $this;
+    }
+    
+    //Handles get_by_* calls
+    public function __call($method, $arguments)
+    {
+        if(strpos($method, 'get_by_') !== FALSE)
+        {
+            list($blank, $field) = explode('get_by_', $method);
+            
+            if(!in_array($field, $this->fields))
+            {
+                throw new Exception("Unable to find field: $field");
+            }
+            
+            //Perform query
+            if(isset($arguments[0]))
+            {
+                $this->where($field, $arguments[0], 'AND');
+            }
+            
+            return $this->get();
+        }
     }
     
     public function get()
     {
-        $this->clear();
-        
         //Build query
         $query = "SELECT ";
         
@@ -161,7 +233,19 @@ class PipeTable
         $query .= sprintf(" %s %s ", 'FROM', $this->table);
         
         //Handle WHERE
-        $query .= (strlen($this->where_str) > 0) ? $this->where_str : '';
+        $query .= (strlen($this->where_str) > 0) ? $this->where_str.' ' : '';
+        
+        //Handle LIKE
+        $query .= (strlen($this->like_str) > 0) ? $this->like_str.' ' : '';
+        
+        //Handle ORDER BY
+        $query .= (strlen($this->orderby_str) > 0) ? $this->orderby_str.' ' : '';
+        
+        //Handle LIMIT
+        $query .= (strlen($this->limit_str) > 0) ? $this->limit_str.' ' : '';
+        
+        //Handle OFFSET
+        $query .= (strlen($this->offset_str) > 0) ? $this->offset_str.' ' : '';
         
         echo $query;
     }

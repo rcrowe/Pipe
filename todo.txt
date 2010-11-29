@@ -128,7 +128,7 @@ public function like($field, $match)
 
 public function order_by($field, $direction)
 {
-    $dir = ($direction == 'desc') ? 'DESC' : 'ASC';
+    $dir = ($direction == 'ASC') ? 'DESC' : 'ASC';
     $this->orderby_str = "ORDER BY $field $dir";
 }
 

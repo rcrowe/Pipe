@@ -5,8 +5,10 @@ require 'Pipe.php';
 $pipe = Pipe::connect('localhost', 'root', 'root');
 $users = $pipe->table('blunder', 'users');
 
-$users->select('id,name,age')->where('id', 2)->get();
+// $users->select('id,name,age')->where('id', 2)->where('name', 'Rob')->like('%ob')->order_by('id')->limit(10)->offset(10)->get();
 
-// $users->get();
+$users->get_by_id(2);
+// echo "\n";
+// $users->get_by_email('test@test.com');
 
 ?>
