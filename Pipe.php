@@ -85,6 +85,12 @@ class PipeTable
     //Holds count of records from last request
     public $count;
     
+    //Field name in table for created timestamp
+    public $created_field = 'created';
+    
+    //Field name in table for update timestamp
+    public $updated_field = 'updated';
+    
     //Holds copy of existing data to check for changes against
     private $store;
     
@@ -338,6 +344,13 @@ class PipeTable
                 return;
             }
             
+            //As whe are updating, can only change updated field
+            //Add update timestamp
+            if(in_array($this->updated_field, $this->fields))
+            {
+                $set[] = $this->updated_field.'='.time();
+            }
+            
             //Build query
             $set_str  = implode(',', $set);
             
@@ -369,11 +382,19 @@ class PipeTable
                     $values[]  = '\''.$this->{$field}.'\'';
                 }
             }
-            
+                       
             //Check we have something to change
             if(count($colomns) === 0)
             {
                 return;
+            }
+            
+            //As whe are updating, can only change updated field
+            //Add update timestamp
+            if(in_array($this->created_field, $this->fields))
+            {
+                $colomns[] = $this->created_field;
+                $values[]  = time();
             }
             
             $col_str = sprintf("(%s)", implode(',', $colomns));

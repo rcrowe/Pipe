@@ -1,6 +1,4 @@
 
 query - maybe
 
-created & updated fields
-
 transactions - maybe

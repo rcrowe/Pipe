@@ -73,9 +73,40 @@ $users = $pipe->table('blunder', 'users');
 // $users->delete();
 
 
-$users->where('username', 'rrr')->or_where('username', 'crowe')->get();
+// $users->where('username', 'rrr')->or_where('username', 'crowe')->get();
 
-print_r($users->all);
+// print_r($users->all);
+
+
+//Testing updated field name
+//defaults:
+//  created_field = created
+//  updated_field = updated
+
+// $users->updated_field = 'last_login';
+
+// $users->get_by_id(3);
+
+// $users->email = 'test.test@test.com';
+
+// $users->save();
+
+
+//Test created field
+// $users->created_field = 'created_on';
+
+// $users->clear();
+
+// $users->email = 'work@poo.com';
+
+// $users->save();
+
+
+
+//Now lets delete them
+$users->clear();
+$users->where('email')->like('work%')->get();
+$users->delete();
 
 
 ?>
