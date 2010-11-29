@@ -5,13 +5,6 @@ require 'Pipe.php';
 $pipe = Pipe::connect('localhost', 'root', 'root');
 $users = $pipe->table('blunder', 'users');
 
-/*
-OR
-$db = mysql_connect('localhost', 'root', 'root');
-$pipe = new Pipe($db);
-$pipe->table('blunder', 'users');
-*/
-
 
 /* EXAMPLE 1 */
 //Say you wanted to check if someone had already registered an email address, really simple with Pipe
@@ -62,14 +55,27 @@ $pipe->table('blunder', 'users');
 
 
 //Test with new table
-$errors = $pipe->table('blunder', 'errors');
+// $errors = $pipe->table('blunder', 'errors');
 
-$errors->project_id = 12;
-$errors->hash       = sha1($errors->project_id);
-$errors->parent_id  = 45;
+// $errors->project_id = 12;
+// $errors->hash       = sha1($errors->project_id);
+// $errors->parent_id  = 45;
 
-$errors->save();
+// $errors->save();
 
-echo "ID: ".$errors->id;
+// echo "ID: ".$errors->id;
+
+
+
+//Delete
+// $users->get_by_id(8);
+
+// $users->delete();
+
+
+$users->where('username', 'rrr')->or_where('username', 'crowe')->get();
+
+print_r($users->all);
+
 
 ?>

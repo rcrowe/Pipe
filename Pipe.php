@@ -170,6 +170,14 @@ class PipeTable
         return $this;
     }
     
+    public function or_where($key, $value)
+    {
+        $this->where($key, $value, 'OR');
+        
+        //So we can chain
+        return $this;
+    }
+    
     public function like($field)
     {
         $this->like_str = "LIKE '$field'";
@@ -270,7 +278,6 @@ class PipeTable
         
         //Handle OFFSET
         $query .= (strlen($this->offset_str) > 0) ? $this->offset_str.' ' : '';
-        
         
         /*
         Lets GO!
@@ -387,6 +394,28 @@ class PipeTable
             
             $this->refresh_store();
         }
+    }
+    
+    public function delete()
+    {
+        if(!is_null($this->id))
+        {
+            $query = sprintf("DELETE FROM %s WHERE id=%s", $this->table, $this->id);
+            
+            $result = @mysql_query($query);
+            
+            if(!$result)
+            {
+                throw new Exception("Error: ".mysql_error());
+            }
+            
+            $this->clear();
+        }
+    }
+    
+    public function close()
+    {
+        mysql_close();
     }
 }
 
