@@ -5,19 +5,46 @@ require 'Pipe.php';
 $pipe = Pipe::connect('localhost', 'root', 'root');
 $users = $pipe->table('blunder', 'users');
 
-// $users->select('id,name,age')->where('id', 2)->where('name', 'Rob')->like('%ob')->order_by('id')->limit(10)->offset(10)->get();
+/*
+OR
+$db = mysql_connect('localhost', 'root', 'root');
+$pipe = new Pipe($db);
+$pipe->table('blunder', 'users');
+*/
 
-// $users->get_by_id(2);
-// echo "\n";
-$users->get_by_email('test@test.com');
+
+/* EXAMPLE 1 */
+//Say you wanted to check if someone had already registered an email address, really simple with Pipe
+
+// $users->get_by_email('nobby.crowe@gmail.com');
+
+// if($users->count() > 0)
+// {
+    // echo 'Email already exists';
+    // print_r($users->all);
+// }
+// else
+// {
+    // echo 'You can register this address';
+// }
+
+/* EXAMPLE 2 */
+$users->get_where(array(
+    'email' => 'test@test.com',
+    'last_name' => 'eas'
+));
 
 if($users->exists())
 {
-    echo $users->count();
+    // print_r($users->all);
     
-    echo $users->username;
+    echo "Email: ".$users->first_name."\n\n";
+        
+    $users->email    = 'robert.crowe@thalesgroup.com';
+    $users->username = 'crowe';
     
-    print_r($users->all);
+    $users->save();
+    
 }
 
 ?>

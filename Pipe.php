@@ -225,6 +225,27 @@ class PipeTable
         }
     }
     
+    public function get_where($where, $limit = NULL, $offset = NULL)
+    {
+        if(!is_null($limit))
+        {
+            $this->limit($limit);
+        }
+        
+        if(!is_null($offset))
+        {
+            $this->offset($offset);
+        }
+        
+        //Loop through each where item
+        foreach($where as $field => $val)
+        {
+            $this->where($field, $val);
+        }
+        
+        return $this->get();
+    }
+    
     public function get()
     {
         //Build query
@@ -251,13 +272,9 @@ class PipeTable
         $query .= (strlen($this->offset_str) > 0) ? $this->offset_str.' ' : '';
         
         
-        
-        /////////////////////////////////////////
-        //echo $query."\n";
-        /////////////////////////////////////////
-        
-        
-        
+        /*
+        Lets GO!
+        */
         $result = @mysql_query($query);
         
         if(!$result)
@@ -278,6 +295,8 @@ class PipeTable
                 $this->{$key} = $value;
             }
         }
+        
+        $this->refresh_store();
     }
     
     public function count()
@@ -289,6 +308,42 @@ class PipeTable
 	{
 		return (!empty($this->id));
 	}
+    
+    public function save()
+    {
+        $colomns = array();
+        $values  = array();
+    
+        if(!is_null($this->id))
+        {
+            //Get the data that has changed
+            foreach($this->fields as $field)
+            {
+                if($this->{$field} !== $this->store[$field])
+                {
+                    $colomns[] = "$field";
+                    $values[]  = $this->{$field};
+                }
+            }
+            
+            $col_str  = '('.implode(',', $colomns).')';
+            $val_str  = '('.implode(',', $values).')';
+            
+            $query = sprintf("INSERT INTO %s %s VALUES %s", $this->table, $col_str, $val_str);
+            
+            echo $query;
+            
+            //lets GO!
+            $result = @mysql_query($query);
+            
+            if(!$result)
+            {
+                throw new Exception("Error: ".mysql_error());
+            }
+            
+            $this->refresh_store();
+        }
+    }
 }
 
 ?>
