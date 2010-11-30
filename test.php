@@ -11,6 +11,10 @@ Pipe::initialize(function($cfg){
     // $cfg->connection('development'); //Select from set_connections()
     
     $cfg->connection('mysql://root:root@localhost/blunder'); //Use this connection, override anything else
-})
+});
+
+$users = Pipe::table('users');
+
+$users->name();
 
 ?>

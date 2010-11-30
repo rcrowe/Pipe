@@ -10,19 +10,37 @@ require 'lib/Exceptions.php';
 require 'lib/Singleton.php';
 require 'lib/Config.php';
 require 'lib/Connection.php';
+require 'lib/Table.php';
 
 class Pipe {
     
-    public function initialize($config)
+    public static function initialize($config)
     {
         Pipe\Config::initialize($config);
         
         Pipe\Connection::initialize();
+    }
+    
+    public function table($name)
+    {
+        $config = Pipe\Singleton::instance('config');
         
-        // $config = Pipe\Singleton::instance('config');
-        // var_dump($config->pdo);
+        $sth     = $config->adapter->column_info($name);
+        $results = $sth->fetchAll();
         
-        var_dump($config->adapter->connection);
+        //Lets fetch the columns in the table
+        $cols = array();
+        
+        foreach($results as $row)
+        {
+            $cols[] = $row['field'];
+        }
+        
+        //Set config for table
+        $config->table   = $name;
+        $config->columns = $cols;
+        
+        return Pipe\Singleton::instance('table');
     }
 }
 
