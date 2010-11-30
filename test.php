@@ -17,14 +17,22 @@ Pipe::initialize(function($cfg){
 
 $users = Pipe::table('users');
 
-$users->get_by_id(4);
+// $users->get_by_id(4);
 
-echo "ID: $users->username";
+// echo "ID: $users->username";
 
-$users->username = 'elliot';
+// $users->username = 'elliot';
 
-$users->save();
+// $users->save();
 
-echo "ID: $users->username";
+// echo "ID: $users->username";
+
+// $users->get_by_id(5);
+
+// $users->delete();
+
+$users->select('id,username')->where('password', 'rrr')->limit(1)->get();
+
+print_r($users->all);
 
 ?>
