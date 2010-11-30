@@ -17,7 +17,6 @@ class Pipe {
     public static function initialize($config)
     {
         Pipe\Config::initialize($config);
-        
         Pipe\Connection::initialize();
     }
     
@@ -36,11 +35,24 @@ class Pipe {
             $cols[] = $row['field'];
         }
         
+        //Make sure table has an ID field
+        if(!in_array('id', $cols))
+        {
+            throw new PipeException("Table `$name` must contain an `id` column");
+        }
+        
         //Set config for table
         $config->table   = $name;
         $config->columns = $cols;
         
-        return Pipe\Singleton::instance('table');
+        return new Pipe\Table;
+    }
+    
+    public static function environment()
+    {
+        $config = Pipe\Singleton::instance('config');
+        
+        return $config->default_connection;
     }
 }
 
