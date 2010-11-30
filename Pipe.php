@@ -18,6 +18,11 @@ class Pipe {
         Pipe\Config::initialize($config);
         
         Pipe\Connection::initialize();
+        
+        // $config = Pipe\Singleton::instance('config');
+        // var_dump($config->pdo);
+        
+        var_dump($config->adapter->connection);
     }
 }
 
