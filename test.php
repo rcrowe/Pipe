@@ -16,6 +16,7 @@ Pipe::initialize(function($cfg){
     $cfg->connection('mysql://root:root@localhost/blunder'); //Use this connection, override anything else
     
     //Or try this
+    //either development or production
     //if($cfg->environment() === 'development')
     //{
     //    $cfg->connection('');
@@ -28,6 +29,7 @@ Pipe::initialize(function($cfg){
     $cfg->updated_field = 'updated_on';
     
 });
+
 
 $users = Pipe::table('users');
 
@@ -55,10 +57,10 @@ $users = Pipe::table('users');
 
 $users->get_by_id(5);
 
-$users->username = 'cowtest';
+/*$users->username = 'cowtest';
 $users->email    = 'cow@test.com';
 $users->password = sha1('el');
 
-$users->save();
+$users->save();*/
 
 ?>
