@@ -9,6 +9,8 @@ class Config extends Singleton {
     //Table info
     public $table;
     public $columns = array();
+    public $created_field = 'created';
+    public $updated_field = 'updated';
 
     //PDO connection settings
     private $connection  = null;

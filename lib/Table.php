@@ -210,7 +210,11 @@ class Table extends Singleton {
             return;
         }
         
-        //TODO: Support updated timestamp field
+        //If table contains update_field, set update time
+        if((strlen($this->config->updated_field) > 0) && in_array($this->config->updated_field, $this->config->columns))
+        {
+            $set[] = $this->config->updated_field.'='.time();
+        }
         
         //Build query
         $set_str = implode(',', $set);
@@ -244,7 +248,12 @@ class Table extends Singleton {
             return;
         }
         
-        ///TODO: Support created timestamp field
+        //If table contains update_field, set update time
+        if((strlen($this->config->created_field) > 0) && in_array($this->config->created_field, $this->config->columns))
+        {
+            $columns[] = $this->config->created_field;
+            $values[]  = time();
+        }
         
         $col_str = sprintf("(%s)", implode(',', $columns));
         $val_str = sprintf("(%s)", implode(',', $values));

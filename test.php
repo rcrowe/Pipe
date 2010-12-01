@@ -11,15 +11,22 @@ Pipe::initialize(function($cfg){
     //    'test'  => ''
     //));
     
-    $cfg->connection('mysql://root:root@localhost/blunder');
+    //$cfg->connection('dev');
     
-    //$cfg->connection('mysql://root:root@localhost/blunder'); //Use this connection, override anything else
+    $cfg->connection('mysql://root:root@localhost/blunder'); //Use this connection, override anything else
     
     //Or try this
     //if($cfg->environment() === 'development')
     //{
     //    $cfg->connection('');
     //}
+    
+    //Default created field = created
+    $cfg->created_field = 'created_on';
+    
+    //Default updated field = updated
+    $cfg->updated_field = 'updated_on';
+    
 });
 
 $users = Pipe::table('users');
@@ -38,12 +45,20 @@ $users = Pipe::table('users');
 
 // $users->delete();
 
-$users->select('id,username')->get();
+//$users->select('id,username')->get();
 
-foreach($users->all as $user)
-{
-    echo $user->id;
-    echo $user->username;
-}
+//foreach($users->all as $user)
+//{
+//    echo $user->id;
+//    echo $user->username;
+//}
+
+$users->get_by_id(5);
+
+$users->username = 'cowtest';
+$users->email    = 'cow@test.com';
+$users->password = sha1('el');
+
+$users->save();
 
 ?>
