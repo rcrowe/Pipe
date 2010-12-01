@@ -143,7 +143,16 @@ class Table extends Singleton {
         
         while($row = $sth->fetch(PDO::FETCH_ASSOC))
         {
-            $this->all[] = $row;
+            //Lets keep things as an object
+            $obj = new \stdClass;
+            
+            //Add result to all
+            foreach($row as $key => $val)
+            {
+                $obj->{$key} = $val;
+            }
+            
+            $this->all[] = $obj;
         }
         
         if(count($this->all) > 0)

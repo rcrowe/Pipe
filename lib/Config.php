@@ -21,7 +21,7 @@ class Config extends Singleton {
         //Work out the default connection based on environment
         //This for the default connection when set_connections() passes in an array of connections
         //and user hasnt manually selected the active one
-        $this->default_connection = $this->get_environment();
+        $this->default_connection = $this->environment();
     }
 
     public static function initialize(Closure $config)
@@ -30,7 +30,7 @@ class Config extends Singleton {
         $config(self::instance());
     }
     
-    public function get_environment()
+    public function environment()
     {
         $env = '';
         

@@ -6,13 +6,20 @@ require 'Pipe.php';
 //  - created, updated fields
 Pipe::initialize(function($cfg){
 
-    // $cfg->connections(array(
-        // 'development' => 'mysql://username:password@localhost/database_name'
-    // ));
+    //$cfg->connections(array(
+    //    'dev'   => 'mysql://root:root@localhost/blunder',
+    //    'test'  => ''
+    //));
     
-    // $cfg->connection('development'); //Select from set_connections()
+    $cfg->connection('mysql://root:root@localhost/blunder');
     
-    $cfg->connection('mysql://root:root@localhost/blunder'); //Use this connection, override anything else
+    //$cfg->connection('mysql://root:root@localhost/blunder'); //Use this connection, override anything else
+    
+    //Or try this
+    //if($cfg->environment() === 'development')
+    //{
+    //    $cfg->connection('');
+    //}
 });
 
 $users = Pipe::table('users');
@@ -31,8 +38,12 @@ $users = Pipe::table('users');
 
 // $users->delete();
 
-$users->select('id,username')->where('password', 'rrr')->limit(1)->get();
+$users->select('id,username')->get();
 
-print_r($users->all);
+foreach($users->all as $user)
+{
+    echo $user->id;
+    echo $user->username;
+}
 
 ?>

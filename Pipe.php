@@ -20,7 +20,7 @@ class Pipe {
         Pipe\Connection::initialize();
     }
     
-    public function table($name)
+    public static function table($name)
     {
         $config = Pipe\Singleton::instance('config');
         
@@ -46,13 +46,6 @@ class Pipe {
         $config->columns = $cols;
         
         return new Pipe\Table;
-    }
-    
-    public static function environment()
-    {
-        $config = Pipe\Singleton::instance('config');
-        
-        return $config->default_connection;
     }
 }
 
