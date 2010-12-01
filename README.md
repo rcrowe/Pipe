@@ -1,8 +1,8 @@
 Pipe
 ====
 
-Pipe is a simple ORM for PHP that makes use of the ActiveRecord pattern. It was initially written for cases when I 
-didn`t want to adhere to an MVC pattern with models, something that the current ORM solutions do not provide.
+Pipe is a simple ORM for PHP that makes use of the ActiveRecord pattern. It was initially written for cases when you 
+don't want to adhere to an MVC pattern with models, something that the current ORM solutions do not provide.
 
 Pipe is built upon PDO which means it can be used across many different types of databases with the same API. Pipe currently
 has adapters for MySQL, SQLite and PostgreSQL.
@@ -20,7 +20,7 @@ Make sure you have the drivers available for your chosen database. Currently sup
 * SQLite
 * PostgreSQL
 
-Examples
+Example
 --------
 
     <?php
