@@ -55,7 +55,7 @@ To regenerate: rm -r docs && phpdoc -c phpdoc.ini
 License
 -------
 
-Copyright 2010, Robert Crowe `<hello@vivalacrowe.com>`
+Copyright 2010, Robert Crowe `hello@vivalacrowe.com`
 
 Licensed under [The MIT License](http://www.opensource.org/licenses/mit-license.php)
 Redistributions of files must retain the above copyright notice.
