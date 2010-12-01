@@ -1,7 +1,7 @@
 Pipe
 ====
 
-Pipe is a simple ORM for PHP. It makes use of the ActiveRecord method of accessing the database. It was initially written for
+Pipe is a simple ORM for PHP. It makes use of the ActiveRecord pattern of accessing the database. It was initially written for
 cases when I didnt want to adhere to a MVC pattern with Models and the current ORM solutions.
 
 Pipe is built upon PDO which means it can be used across many different types of databases with the same API. Pipe currently
