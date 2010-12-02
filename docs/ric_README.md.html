@@ -39,21 +39,52 @@
 
 <h1 align="center">README.md</h1>
 <pre>
-Hippy
-=====
+Pipe
+====
 
-Hippy is a simple PHP client for sending messages to a HipChat room. It is designed for incidental notifications from an application.
+Pipe is a simple ORM for PHP that makes use of the ActiveRecord pattern. It was initially written for cases when you 
+don't want to adhere to an MVC pattern with models, something that the current ORM solutions do not provide.
+
+Pipe is built upon PDO which means it can be used across many different types of databases with the same API. Pipe currently
+has adapters for MySQL, SQLite and PostgreSQL.
 
 Requirements
 ------------
 
-* [mandatory] PHP version 5.x (developed using 5.2.9)
-* [mandatory] PHP's cURL module
+* [mandatory] PHP version 5.3 (developed using 5.3.1)
 
-Examples
+Pipe makes use of [PDO](http://php.net/manual/en/book.pdo.php) for querying the database.
+
+Make sure you have the drivers available for your chosen database. Currently supported databases:
+
+* MySQL
+* SQLite
+* PostgreSQL
+
+Example
 --------
 
-For an example of how to use Hippy see `example.php`
+    &lt;?php
+    
+    require 'Pipe.php';
+    
+    Pipe::initialize(function($cfg){
+       $cfg-&gt;connection('mysql://root:root@localhost/project');
+    });
+    
+    //Select the `users` table
+    $users = Pipe::table('users');
+    
+    //Select row `2` from `id` column
+    $users-&gt;get_by_id(2);
+    
+    //Change first name to Rob
+    $users-&gt;first_name = 'Rob';
+    
+    //Make the change
+    $users-&gt;save();
+    
+    ?&gt;
 
 Docs
 ----
@@ -62,10 +93,18 @@ Documentation is generated directly from the source code using PhpDocumentator.
 
 To regenerate: rm -r docs &amp;&amp; phpdoc -c phpdoc.ini
 
+License
+-------
+
+Copyright 2010, Robert Crowe `hello@vivalacrowe.com`
+
+Licensed under [The MIT License](http://www.opensource.org/licenses/mit-license.php)
+Redistributions of files must retain the above copyright notice.
+
 </pre>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Wed, 01 Dec 2010 16:45:06 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Thu, 02 Dec 2010 21:21:55 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
