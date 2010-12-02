@@ -55,7 +55,7 @@ $users = Pipe::table('users');
 //    echo $user->username;
 //}
 
-$users->get_by_id(5);
+//$users->get_by_id(5);
 
 /*$users->username = 'cowtest';
 $users->email    = 'cow@test.com';

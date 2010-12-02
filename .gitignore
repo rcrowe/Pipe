@@ -13,6 +13,5 @@ tmtags
 ## VIM
 *.swp
 
-## PHPDoc files and directory
+## PHPDoc file
 *.ini
-docs/
