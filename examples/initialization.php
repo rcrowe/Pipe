@@ -32,7 +32,7 @@ Pipe::initialize(function($cfg){
     //Either development or production
     
     //Check which environment your on
-    if($cfg->environment() === 'development')
+    if($cfg->environment() === $cfg::DEVELOPMENT)
     {
         
     }
