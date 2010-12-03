@@ -42,6 +42,9 @@ use Closure;
  * @author      Robert Crowe <hello@vivalacrowe.com>
  */
 class Config extends Singleton {
+    
+    const DEVELOPMENT = 0;
+    const PRODUCTION  = 1;
 
     /**
      * @var string Name of the database table accessing
@@ -93,11 +96,14 @@ class Config extends Singleton {
         //Work out the default connection based on environment
         //This for the default connection when set_connections() passes in an array of connections
         //and user hasnt manually selected the active one
-        $this->default_connection = $this->environment();
+        $default_connection = $this->environment();
+        $this->default_connection = ($default_connection === self::DEVELOPMENT) ? 'development' : 'production';
     }
 
     /**
      * Sets up an instance of config passing in users settings
+     *
+     * @return void
      */
     public static function initialize(Closure $config)
     {
@@ -108,8 +114,7 @@ class Config extends Singleton {
     /**
      * Gets the current environment based on SERVER_NAME. 
      *
-     * @return string Either `development` or `production`
-     * @todo   Move from a string to a constant Config::DEV, Config::PRO
+     * @return int Returns constant DEVELOPMENT or PRODUCTION.
      */
     public function environment()
     {
@@ -118,11 +123,11 @@ class Config extends Singleton {
         if(strpos($_SERVER['SERVER_NAME'], 'local.') !== FALSE OR $_SERVER['SERVER_NAME'] == 'localhost' 
                   OR strpos($_SERVER['SERVER_NAME'], '.local') !== FALSE)
         {
-            $env = 'development';
+            $env = self::DEVELOPMENT;
         }
         else
         {
-            $env = 'production';
+            $env = self::PRODUCTION;
         }
         
         return $env;
@@ -155,6 +160,14 @@ class Config extends Singleton {
         }
     }
     
+    /**
+     * Allows you to set multiple connections.
+     *
+     * @see    connection
+     * @param  array $connections Store multiple connections
+     * @throws PipeException
+     * @return string Currently set DSN or name of connection
+     */
     public function connections($connections = null)
     {
         if(is_null($connections))
