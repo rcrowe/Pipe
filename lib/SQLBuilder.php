@@ -30,10 +30,14 @@ class SQLBuilder {
     {
         if(is_array($select))
         {
-            $this->select_str .= implode(',', $select);
+            $select_str        = strtolower(implode(',', $select));
+            $this->select_str .= $select_str;
         }
         else
         {
+            //Make sure we select `ID` and make case lower
+            $select = strtolower($select);
+            
             $this->select_str .= $select;
         }
     }
@@ -86,7 +90,15 @@ class SQLBuilder {
         $sql = "SELECT ";
         
         //Handle SELECT
-        $sql .= (strlen($this->select_str) > 0) ? $this->select_str : '*';
+        if(strlen($this->select_str) > 0)
+        {
+            //Make sure request includes ID, this is needed by Pipe
+            $sql .= 'id,'.$this->select_str;
+        }
+        else
+        {
+            $sql .= '*';
+        }
         
         $sql .= sprintf(" %s %s ", 'FROM', $this->table);
         
