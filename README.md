@@ -35,6 +35,7 @@ Example
     $users = Pipe::table('users');
     
     //Select row `2` from `id` column
+    //Short hand for: $users->select('*')->where('id', 2)->get()
     $users->get_by_id(2);
     
     //Change first name to Rob
