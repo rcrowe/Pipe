@@ -61,15 +61,15 @@ class Table extends Singleton {
         return $this;
     }
     
-    public function where($field, $value = null, $type = 'AND')
+    public function where($field, $value = null, $operator = '=', $type = 'AND')
     {
-        $this->builder->where($field, $value, $type);
+        $this->builder->where($field, $value, $operator, $type);
         return $this;
     }
     
-    public function or_where($key, $value)
+    public function or_where($key, $value, $operator = '=')
     {
-        $this->builder->or_where($key, $value);
+        $this->builder->or_where($key, $value, $operator);
         return $this;
     }
     
@@ -107,7 +107,7 @@ class Table extends Singleton {
             //Perform query
             if(isset($args[0]))
             {
-                $this->where($field, $args[0], 'AND');
+                $this->where($field, $args[0], '=', 'AND');
             }
             
             return $this->get();
@@ -116,6 +116,11 @@ class Table extends Singleton {
     
     public function get_where($where, $limit = NULL, $offset = NULL)
     {
+        if(!is_array($where))
+        {
+            throw new PipeException('get_where only supports an array as its first argument');
+        }
+        
         if(!is_null($limit))
         {
             $this->limit($limit);

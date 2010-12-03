@@ -42,7 +42,7 @@ class SQLBuilder {
         }
     }
     
-    public function where($field, $value, $type)
+    public function where($field, $value, $operator, $type)
     {
         if(strlen($this->where_str) > 0)
         {
@@ -55,7 +55,7 @@ class SQLBuilder {
         
         if($value !== NULL)
         {
-            $this->where_str .= "$field='$value'";
+            $this->where_str .= "$field$operator'$value'";
         }
         else
         {
@@ -63,9 +63,9 @@ class SQLBuilder {
         }
     }
     
-    public function or_where($key, $value)
+    public function or_where($key, $value, $operater)
     {
-        $this->where($key, $value, 'OR');
+        $this->where($key, $value, $operator, 'OR');
     }
     
     public function like($field)
@@ -113,6 +113,8 @@ class SQLBuilder {
         
         //Handle LIMIT & OFFSET
         $sql .= (strlen($this->limit_offset_str) > 0) ? $this->limit_offset_str.' ' : '';
+        
+        echo "SQL: $sql\n";
 
         return $sql;
     }
