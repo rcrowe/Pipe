@@ -28,6 +28,9 @@
 	<div id="ric">
 					<p><a href="../ric_README.md.html">README.md</a></p>
 			</div>
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
       <b>Packages:</b><br />
               <a href="../li_Pipe.html">Pipe</a><br />
             <br /><br />
@@ -87,12 +90,16 @@ Source Location: /lib/Config.php<br /><br />
 <pre><a href="../Pipe/Singleton.html">Singleton</a>
    |
    --Config</pre><br />
-<div class="description">Gives the extending class the ability to add the singleton pattern</div><br /><br />
+<div class="description">Pipe Config</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>Robert Crowe &lt;<a href="mailto:hello@vivalacrowe.com">hello@vivalacrowe.com</a>&gt;</li>
+      </ul>
 
 
 
 
-
+    
 
         
 </td>
@@ -103,7 +110,6 @@ Source Location: /lib/Config.php<br /><br />
     <li><a href="../Pipe/Config.html#var$adapter">$adapter</a></li>
     <li><a href="../Pipe/Config.html#var$columns">$columns</a></li>
     <li><a href="../Pipe/Config.html#var$created_field">$created_field</a></li>
-    <li><a href="../Pipe/Config.html#var$default_connection">$default_connection</a></li>
     <li><a href="../Pipe/Config.html#var$table">$table</a></li>
     <li><a href="../Pipe/Config.html#var$updated_field">$updated_field</a></li>
   </ul>
@@ -151,8 +157,17 @@ Source Location: /lib/Config.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 7]<br />
-Gives the extending class the ability to add the singleton pattern<br /><br /></div><br /><br />
+[line 44]<br />
+Pipe Config<br /><br /><p>Config object is responsible for storing all the configuration, connection and settings used through out Pipe.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>Robert Crowe &lt;<a href="mailto:hello@vivalacrowe.com">hello@vivalacrowe.com</a>&gt;</td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
 <div class="top">[ <a href="#top">Top</a> ]</div><br />
 
 <hr />
@@ -162,7 +177,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
 	<a name="var$adapter"></a>
 	<p></p>
 	<h4>$adapter = <span class="value">&nbsp;null</span></h4>
-	<p>[line 19]</p>
+	<p>[line 69]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
@@ -178,7 +193,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
   <table border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
+      <td><a href="../Pipe/Connection.html">Connection</a></td>
     </tr>
       </table>
 	</div><br /><br />
@@ -186,11 +201,14 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
 	<a name="var$columns"></a>
 	<p></p>
 	<h4>$columns = <span class="value">array()</span></h4>
-	<p>[line 11]</p>
+	<p>[line 54]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>var:</b>&nbsp;&nbsp;</td><td>Columns in the selected table</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -202,7 +220,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
   <table border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
+      <td>array</td>
     </tr>
       </table>
 	</div><br /><br />
@@ -210,11 +228,14 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
 	<a name="var$created_field"></a>
 	<p></p>
 	<h4>$created_field = <span class="value">&nbsp;'created'</span></h4>
-	<p>[line 12]</p>
+	<p>[line 59]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>var:</b>&nbsp;&nbsp;</td><td>Name of column to insert created timestamp.</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -226,31 +247,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
   <table border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
-    </tr>
-      </table>
-	</div><br /><br />
-	<div class="top">[ <a href="#top">Top</a> ]</div><br />
-	<a name="var$default_connection"></a>
-	<p></p>
-	<h4>$default_connection = <span class="value">&nbsp;''</span></h4>
-	<p>[line 18]</p>
-  <br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-
-  <br />
-	<div class="tags">
-  <table border="0" cellspacing="0" cellpadding="0">
-    <tr>
-      <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
+      <td>string</td>
     </tr>
       </table>
 	</div><br /><br />
@@ -258,11 +255,14 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
 	<a name="var$table"></a>
 	<p></p>
 	<h4>$table = <span class="value"></span></h4>
-	<p>[line 10]</p>
+	<p>[line 49]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>var:</b>&nbsp;&nbsp;</td><td>Name of the database table accessing</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -274,7 +274,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
   <table border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
+      <td>string</td>
     </tr>
       </table>
 	</div><br /><br />
@@ -282,11 +282,14 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
 	<a name="var$updated_field"></a>
 	<p></p>
 	<h4>$updated_field = <span class="value">&nbsp;'updated'</span></h4>
-	<p>[line 13]</p>
+	<p>[line 64]</p>
   <br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>var:</b>&nbsp;&nbsp;</td><td>Name of column to update timestamp</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -298,7 +301,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
   <table border="0" cellspacing="0" cellpadding="0">
     <tr>
       <td><b>Type:</b>&nbsp;&nbsp;</td>
-      <td>mixed</td>
+      <td>string</td>
     </tr>
       </table>
 	</div><br /><br />
@@ -311,7 +314,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
 <div class="tags">
   <hr />
 	<a name="methodinitialize"></a>
-	<h3>static method initialize <span class="smalllinenumber">[line 29]</span></h3>
+	<h3>static method initialize <span class="smalllinenumber">[line 102]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -321,7 +324,7 @@ $config)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Sets up an instance of config passing in users settings<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -348,7 +351,7 @@ $config)</code>
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 21]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 91]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -357,7 +360,7 @@ $config)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Initialises Config. Sets the default connection @see self::default_connection.<br /><br /><p>Use Config::instance(), see Config::instance().</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -373,20 +376,23 @@ $config)</code>
   </div>
   <hr />
 	<a name="methodconnection"></a>
-	<h3>method connection <span class="smalllinenumber">[line 52]</span></h3>
+	<h3>method connection <span class="smalllinenumber">[line 138]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void connection(
-[
+		<code>string connection(
+[string
 $name = null])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Used to set one connection with a DSN or to select one connection when using multiple connections. Make sure  you are using a supported adapter and driver with your DSN.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>If $name equals NULL, returns the currently set connection or connection name.</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -399,9 +405,9 @@ $name = null])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Sets the connection or if the name matches a multiple connection that connection is selected.</td>
       </tr>
         </table>
     </div><br />
@@ -409,7 +415,7 @@ $name = null])</code>
   </div>
   <hr />
 	<a name="methodconnections"></a>
-	<h3>method connections <span class="smalllinenumber">[line 72]</span></h3>
+	<h3>method connections <span class="smalllinenumber">[line 158]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -445,19 +451,25 @@ $connections = null])</code>
   </div>
   <hr />
 	<a name="methodenvironment"></a>
-	<h3>method environment <span class="smalllinenumber">[line 35]</span></h3>
+	<h3>method environment <span class="smalllinenumber">[line 114]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void environment(
+		<code>string environment(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Gets the current environment based on SERVER_NAME.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Either `development` or `production`</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Move from a string to a constant Config::DEV, Config::PRO</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -473,7 +485,7 @@ $connections = null])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 02 Dec 2010 21:21:55 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 03 Dec 2010 10:54:01 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

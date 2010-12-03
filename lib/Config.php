@@ -57,14 +57,37 @@ class Config extends Singleton {
      * @var string Name of column to insert created timestamp.
      */
     public $created_field = 'created';
+    
+    /**
+     * @var string Name of column to update timestamp
+     */
     public $updated_field = 'updated';
 
-    //PDO connection settings
-    private $connection  = null;
-    private $connections = array();
-    public  $default_connection = '';
+    /**
+     * @var Connection
+     */
     public  $adapter = null;
+    
+    /**
+     * @var string Connection to use if no default is set
+     * @see environment()
+     */
+    private $default_connection = '';
+    
+    /**
+     * @var string Either DSN to connect with, or the name of the connection to use
+     */
+    private $connection  = null;
+    
+    /**
+     * @var array Stores multiple connections
+     */
+    private $connections = array();
 
+    /**
+     * Initialises Config. Sets the default connection @see self::default_connection.
+     * Use Config::instance(), see Config::instance().
+     */
     public function __construct()
     {
         //Work out the default connection based on environment
@@ -73,12 +96,21 @@ class Config extends Singleton {
         $this->default_connection = $this->environment();
     }
 
+    /**
+     * Sets up an instance of config passing in users settings
+     */
     public static function initialize(Closure $config)
     {
         // $config(self::instance('config'));
         $config(self::instance());
     }
     
+    /**
+     * Gets the current environment based on SERVER_NAME. 
+     *
+     * @return string Either `development` or `production`
+     * @todo   Move from a string to a constant Config::DEV, Config::PRO
+     */
     public function environment()
     {
         $env = '';
@@ -96,6 +128,13 @@ class Config extends Singleton {
         return $env;
     }
     
+    /**
+     * Used to set one connection with a DSN or to select one connection when using multiple connections. Make sure
+     * you are using a supported adapter and driver with your DSN.
+     *
+     * @param  string $name Sets the connection or if the name matches a multiple connection that connection is selected.
+     * @return string If $name equals NULL, returns the currently set connection or connection name.
+     */
     public function connection($name = null)
     {
         if(is_null($name))

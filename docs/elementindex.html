@@ -25,6 +25,9 @@
 	<div id="ric">
 					<p><a href="ric_README.md.html">README.md</a></p>
 			</div>
+	<div id="todolist">
+			<p><a href="todolist.html">Todo List</a></p>
+	</div>
       <b>Packages:</b><br />
               <a href="li_Pipe.html">Pipe</a><br />
             <br /><br />
@@ -94,11 +97,11 @@
 							<dt><b>column_info</b></dt>
 				<dd>in file MysqlAdapter.php, method <a href="Pipe/MysqlAdapter.html#methodcolumn_info">MysqlAdapter::column_info()</a></dd>
 							<dt><b>Config</b></dt>
-				<dd>in file Config.php, class <a href="Pipe/Config.html">Config</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Gives the extending class the ability to add the singleton pattern</dd>
+				<dd>in file Config.php, class <a href="Pipe/Config.html">Config</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Pipe Config</dd>
 							<dt><b>Connection</b></dt>
 				<dd>in file Connection.php, class <a href="Pipe/Connection.html">Connection</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Gives the extending class the ability to add the singleton pattern</dd>
 							<dt><b>connection</b></dt>
-				<dd>in file Config.php, method <a href="Pipe/Config.html#methodconnection">Config::connection()</a></dd>
+				<dd>in file Config.php, method <a href="Pipe/Config.html#methodconnection">Config::connection()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Used to set one connection with a DSN or to select one connection when using multiple connections. Make sure  you are using a supported adapter and driver with your DSN.</dd>
 							<dt><b>connections</b></dt>
 				<dd>in file Config.php, method <a href="Pipe/Config.html#methodconnections">Config::connections()</a></dd>
 							<dt><b>count</b></dt>
@@ -115,8 +118,6 @@
 	<div>
 		<h2>d</h2>
 		<dl>
-							<dt><b>$default_connection</b></dt>
-				<dd>in file Config.php, variable <a href="Pipe/Config.html#var$default_connection">Config::$default_connection</a></dd>
 							<dt><b>delete</b></dt>
 				<dd>in file Table.php, method <a href="Pipe/Table.html#methoddelete">Table::delete()</a></dd>
 					</dl>
@@ -128,7 +129,7 @@
 		<h2>e</h2>
 		<dl>
 							<dt><b>environment</b></dt>
-				<dd>in file Config.php, method <a href="Pipe/Config.html#methodenvironment">Config::environment()</a></dd>
+				<dd>in file Config.php, method <a href="Pipe/Config.html#methodenvironment">Config::environment()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Gets the current environment based on SERVER_NAME.</dd>
 							<dt><b>exists</b></dt>
 				<dd>in file Table.php, method <a href="Pipe/Table.html#methodexists">Table::exists()</a></dd>
 							<dt><b>Exceptions.php</b></dt>
@@ -160,7 +161,7 @@
 							<dt><b>initialize</b></dt>
 				<dd>in file Connection.php, method <a href="Pipe/Connection.html#methodinitialize">Connection::initialize()</a></dd>
 							<dt><b>initialize</b></dt>
-				<dd>in file Config.php, method <a href="Pipe/Config.html#methodinitialize">Config::initialize()</a></dd>
+				<dd>in file Config.php, method <a href="Pipe/Config.html#methodinitialize">Config::initialize()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Sets up an instance of config passing in users settings</dd>
 							<dt><b>instance</b></dt>
 				<dd>in file Singleton.php, method <a href="Pipe/Singleton.html#methodinstance">Singleton::instance()</a></dd>
 					</dl>
@@ -338,13 +339,13 @@
 							<dt><b>__construct</b></dt>
 				<dd>in file Connection.php, method <a href="Pipe/Connection.html#method__construct">Connection::__construct()</a></dd>
 							<dt><b>__construct</b></dt>
-				<dd>in file Config.php, method <a href="Pipe/Config.html#method__construct">Config::__construct()</a></dd>
+				<dd>in file Config.php, method <a href="Pipe/Config.html#method__construct">Config::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Initialises Config. Sets the default connection @see self::default_connection.</dd>
 					</dl>
 	</div>
 	<a href="elementindex.html#top">top</a><br>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Thu, 02 Dec 2010 21:21:55 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 03 Dec 2010 10:54:01 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
