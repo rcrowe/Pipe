@@ -278,7 +278,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
   </div>
   <hr />
 	<a name="methodcount"></a>
-	<h3>method count <span class="smalllinenumber">[line 170]</span></h3>
+	<h3>method count <span class="smalllinenumber">[line 175]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -303,7 +303,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
   </div>
   <hr />
 	<a name="methoddelete"></a>
-	<h3>method delete <span class="smalllinenumber">[line 272]</span></h3>
+	<h3>method delete <span class="smalllinenumber">[line 277]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -328,7 +328,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
   </div>
   <hr />
 	<a name="methodexists"></a>
-	<h3>method exists <span class="smalllinenumber">[line 175]</span></h3>
+	<h3>method exists <span class="smalllinenumber">[line 180]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -353,7 +353,7 @@ Gives the extending class the ability to add the singleton pattern<br /><br /></
   </div>
   <hr />
 	<a name="methodget"></a>
-	<h3>method get <span class="smalllinenumber">[line 138]</span></h3>
+	<h3>method get <span class="smalllinenumber">[line 143]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -553,7 +553,8 @@ $direction = 'ASC'])</code>
 		<code>void or_where(
 
 $key, 
-$value)</code>
+$value, [
+$operator = '='])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -580,6 +581,11 @@ $value)</code>
           <tr>
         <td class="type">&nbsp;&nbsp;</td>
         <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$operator</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
         </table>
@@ -613,7 +619,7 @@ $value)</code>
   </div>
   <hr />
 	<a name="methodsave"></a>
-	<h3>method save <span class="smalllinenumber">[line 180]</span></h3>
+	<h3>method save <span class="smalllinenumber">[line 185]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -707,6 +713,7 @@ $select)</code>
 
 $field, [
 $value = null], [
+$operator = '='], [
 $type = 'AND'])</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -734,6 +741,11 @@ $type = 'AND'])</code>
           <tr>
         <td class="type">&nbsp;&nbsp;</td>
         <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$operator</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
           <tr>
@@ -792,7 +804,7 @@ $args)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Fri, 03 Dec 2010 10:54:02 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 03 Dec 2010 19:49:55 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

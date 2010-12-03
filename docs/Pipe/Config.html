@@ -314,7 +314,7 @@ Pipe Config<br /><br /><p>Config object is responsible for storing all the confi
 <div class="tags">
   <hr />
 	<a name="methodinitialize"></a>
-	<h3>static method initialize <span class="smalllinenumber">[line 102]</span></h3>
+	<h3>static method initialize <span class="smalllinenumber">[line 104]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -376,7 +376,7 @@ $config)</code>
   </div>
   <hr />
 	<a name="methodconnection"></a>
-	<h3>method connection <span class="smalllinenumber">[line 138]</span></h3>
+	<h3>method connection <span class="smalllinenumber">[line 140]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -415,20 +415,29 @@ $name = null])</code>
   </div>
   <hr />
 	<a name="methodconnections"></a>
-	<h3>method connections <span class="smalllinenumber">[line 158]</span></h3>
+	<h3>method connections <span class="smalllinenumber">[line 168]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void connections(
-[
+		<code>string connections(
+[array
 $connections = null])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Allows you to set multiple connections.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Currently set DSN or name of connection</td>
+  </tr>
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td><a href="../Pipe/Config.html#methodconnection">Config::connection()</a></td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PipeException</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -441,9 +450,9 @@ $connections = null])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">array&nbsp;&nbsp;</td>
         <td><b>$connections</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Store multiple connections</td>
       </tr>
         </table>
     </div><br />
@@ -451,7 +460,7 @@ $connections = null])</code>
   </div>
   <hr />
 	<a name="methodenvironment"></a>
-	<h3>method environment <span class="smalllinenumber">[line 114]</span></h3>
+	<h3>method environment <span class="smalllinenumber">[line 116]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -485,7 +494,7 @@ $connections = null])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Fri, 03 Dec 2010 10:54:01 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 03 Dec 2010 19:49:55 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

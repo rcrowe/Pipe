@@ -204,7 +204,7 @@ $table)</code>
   </div>
   <hr />
 	<a name="methodget"></a>
-	<h3>method get <span class="smalllinenumber">[line 84]</span></h3>
+	<h3>method get <span class="smalllinenumber">[line 88]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -229,7 +229,7 @@ $table)</code>
   </div>
   <hr />
 	<a name="methodlike"></a>
-	<h3>method like <span class="smalllinenumber">[line 67]</span></h3>
+	<h3>method like <span class="smalllinenumber">[line 71]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -265,7 +265,7 @@ $field)</code>
   </div>
   <hr />
 	<a name="methodlimit"></a>
-	<h3>method limit <span class="smalllinenumber">[line 78]</span></h3>
+	<h3>method limit <span class="smalllinenumber">[line 82]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -301,7 +301,7 @@ $sql)</code>
   </div>
   <hr />
 	<a name="methodorder_by"></a>
-	<h3>method order_by <span class="smalllinenumber">[line 72]</span></h3>
+	<h3>method order_by <span class="smalllinenumber">[line 76]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -343,14 +343,15 @@ $dir)</code>
   </div>
   <hr />
 	<a name="methodor_where"></a>
-	<h3>method or_where <span class="smalllinenumber">[line 62]</span></h3>
+	<h3>method or_where <span class="smalllinenumber">[line 66]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void or_where(
 
 $key, 
-$value)</code>
+$value, 
+$operater)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
@@ -377,6 +378,11 @@ $value)</code>
           <tr>
         <td class="type">&nbsp;&nbsp;</td>
         <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$operater</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
         </table>
@@ -421,7 +427,7 @@ $select)</code>
   </div>
   <hr />
 	<a name="methodwhere"></a>
-	<h3>method where <span class="smalllinenumber">[line 41]</span></h3>
+	<h3>method where <span class="smalllinenumber">[line 45]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -429,6 +435,7 @@ $select)</code>
 
 $field, 
 $value, 
+$operator, 
 $type)</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -460,6 +467,11 @@ $type)</code>
       </tr>
           <tr>
         <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$operator</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
         <td><b>$type</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
@@ -472,7 +484,7 @@ $type)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Fri, 03 Dec 2010 10:54:02 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 03 Dec 2010 19:49:55 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

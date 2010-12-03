@@ -79,6 +79,7 @@ Example
     $users = Pipe::table('users');
     
     //Select row `2` from `id` column
+    //Short hand for: $users-&gt;select('*')-&gt;where('id', 2)-&gt;get()
     $users-&gt;get_by_id(2);
     
     //Change first name to Rob
@@ -107,7 +108,7 @@ Redistributions of files must retain the above copyright notice.
 </pre>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Fri, 03 Dec 2010 10:54:01 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Fri, 03 Dec 2010 19:49:54 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
