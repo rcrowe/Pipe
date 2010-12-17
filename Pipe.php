@@ -63,6 +63,14 @@ class Pipe
         Pipe\Connection::initialise();    //Setup connection to DB
     }
     
+    /**
+     * Set the table you want to call against
+     *
+     * @param  string $name Table name
+     * @throws PipeException
+     * @throws PDOException
+     * @return Pipe\Table
+     */
     public static function table($name)
     {
         return new Pipe\Table($name);
