@@ -31,97 +31,126 @@
 
 namespace Pipe;
 
-use Closure;
-
 /**
  * Pipe Config
  *
- * Config object is responsible for storing all the configuration, connection and settings used through out Pipe.
+ * Config object is responsible for storing all the configuration used to setup a connection to the database, as well as a few helpers.
  *
  * @package     Pipe
  * @author      Robert Crowe <hello@vivalacrowe.com>
  */
-class Config extends Singleton {
-    
-    const DEVELOPMENT = 0;
-    const PRODUCTION  = 1;
-
+class Config
+{
     /**
-     * @var string Name of the database table accessing
-     */
-    public $table;
-    
-    /**
-     * @var array Columns in the selected table
-     */
-    public $columns = array();
-    
-    /**
-     * @var string Name of column to insert created timestamp.
+     * Name of column to insert created timestamp.
      */
     public $created_field = 'created';
     
     /**
-     * @var string Name of column to update timestamp
+     * Name of column to update timestamp
      */
     public $updated_field = 'updated';
 
     /**
-     * @var Connection
+     * Developement environment constant
      */
-    public  $adapter = null;
+    const DEVELOPMENT = 0;
     
     /**
-     * @var string Connection to use if no default is set
-     * @see environment()
+     * Production environment constant
      */
-    private $default_connection = '';
-    
-    /**
-     * @var string Either DSN to connect with, or the name of the connection to use
-     */
-    private $connection  = null;
-    
-    /**
-     * @var array Stores multiple connections
-     */
-    private $connections = array();
+    const PRODUCTION  = 1;
 
     /**
-     * Initialises Config. Sets the default connection @see self::default_connection.
-     * Use Config::instance(), see Config::instance().
+     * Instance of Pipe\Config
+     *
+     * @see Pipe\Config::instance()
      */
-    public function __construct()
+    private static $instance;
+    
+    /**
+     * DSN used to connect to database
+     */
+    private $dsn;
+    
+    /**
+     * Pipe constructor. Not currently used
+     */
+    private function __construct(){}
+    
+    /**
+     * Get a static instance of Pipe\Config
+     *
+     * @return Pipe\Config
+     */
+    public static function instance()
     {
-        //Work out the default connection based on environment
-        //This for the default connection when set_connections() passes in an array of connections
-        //and user hasnt manually selected the active one
-        $default_connection = $this->environment();
-        $this->default_connection = ($default_connection === self::DEVELOPMENT) ? 'development' : 'production';
+        if(!isset(self::$instance))
+        {
+            //Doesnt already exist, create
+            self::$instance = new Config;
+        }
+        
+        return self::$instance;
     }
-
+    
     /**
-     * Sets up an instance of config passing in users settings
+     * Destroy static instance of Pipe\Config. Make sure to call Pipe\Config::instance() for a new instance.
      *
      * @return void
      */
-    public static function initialize(Closure $config)
+    public static function destroy()
     {
-        // $config(self::instance('config'));
-        $config(self::instance());
+        self::$instance = null;
     }
     
     /**
-     * Gets the current environment based on SERVER_NAME. 
+     * Provides closure to main Pipe wrapper.
      *
-     * @return int Returns constant DEVELOPMENT or PRODUCTION.
+     * @param Closure $config Closure with single parameter. Passed instance of Pipe\Config.
+     * @return void
+     */
+    public static function initialise($config)
+    {
+        $instance = self::instance();
+       
+        $config($instance);
+    }
+    
+    /**
+     * Set DSN used to connect to database with. Appends mysql:// to DSN if omitted.
+     *
+     * @param string $dsn DSN to connect with
+     * @return void
+     */
+    public function connection($dsn = null)
+    {
+        if(is_null($dsn))
+        {
+            return $this->dsn;
+        }
+        
+        if(count(explode('mysql://', $dsn)) === 1)
+        {
+            $dsn = 'mysql://'.$dsn;
+        }
+        
+        $this->dsn = $dsn;
+    }
+    
+    /**
+     * Environment currently running on. Helper function useful for setting different DSN strings.
+     *
+     * @see Pipe\Config::DEVELOPMENT
+     * @see Pipe\Config::PRODUCTION
+     * @return integer
      */
     public function environment()
     {
         $env = '';
         
-        if(strpos($_SERVER['SERVER_NAME'], 'local.') !== FALSE OR $_SERVER['SERVER_NAME'] == 'localhost' 
-                  OR strpos($_SERVER['SERVER_NAME'], '.local') !== FALSE)
+        if(strpos($_SERVER['SERVER_NAME'], 'local.') !== FALSE || $_SERVER['SERVER_NAME'] == 'localhost' 
+                  || strpos($_SERVER['SERVER_NAME'], '.local') !== FALSE)
         {
             $env = self::DEVELOPMENT;
         }
@@ -131,60 +160,6 @@ class Config extends Singleton {
         }
         
         return $env;
-    }
-    
-    /**
-     * Used to set one connection with a DSN or to select one connection when using multiple connections. Make sure
-     * you are using a supported adapter and driver with your DSN.
-     *
-     * @param  string $name Sets the connection or if the name matches a multiple connection that connection is selected.
-     * @return string If $name equals NULL, returns the currently set connection or connection name.
-     */
-    public function connection($name = null)
-    {
-        if(is_null($name))
-        {
-            return $this->connection;
-        }
-        else
-        {
-            if(array_key_exists($name, $this->connections))
-            {
-                $this->connection = $this->connections[$name];
-            }
-            else
-            {
-                //Else we have passed in a DSN
-                $this->connection = $name;
-            }
-        }
-    }
-    
-    /**
-     * Allows you to set multiple connections.
-     *
-     * @see    connection
-     * @param  array $connections Store multiple connections
-     * @throws PipeException
-     * @return string Currently set DSN or name of connection
-     */
-    public function connections($connections = null)
-    {
-        if(is_null($connections))
-        {
-            return $this->connections;
-        }
-        else
-        {
-            if(is_array($connections))
-            {
-                $this->connections = $connections;
-            }
-            else
-            {
-                throw new PipeException("Make sure you pass an associated array of connections or use connection() for a single connection");
-            }
-        }
     }
 }
 

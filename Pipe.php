@@ -36,11 +36,10 @@ if (!defined('PHP_VERSION_ID') || PHP_VERSION_ID < 50300)
 }
 
 //Include Pipe library files
-require 'lib/Exceptions.php';
-require 'lib/Singleton.php';
-require 'lib/Config.php';
-require 'lib/Connection.php';
-require 'lib/Table.php';
+require_once 'lib/Exceptions.php';
+require_once 'lib/Config.php';
+require_once 'lib/Connection.php';
+require_once 'lib/Table.php';
 
 /**
  * Pipe
@@ -50,53 +49,23 @@ require 'lib/Table.php';
  * @package     Pipe
  * @author      Robert Crowe <hello@vivalacrowe.com>
  */
-class Pipe {
-    
+class Pipe
+{
     /**
-     * Allows user to set Pipe settings
+     * Initialise Pipe. Sets config and connection to database
      *
+     * @param Closure $config Anonymous function with a single parameter which an instance of Pipe\Config is passed.
      * @return void
      */
-    public static function initialize($config)
+    public static function initialise($config)
     {
-        Pipe\Config::initialize($config);
-        Pipe\Connection::initialize();
+        Pipe\Config::initialise($config); //Set config
+        Pipe\Connection::initialise();    //Setup connection to DB
     }
     
-    /**
-     * Returns an instance of Table to query against the selected table passed in as an argument.
-     *
-     * @param  string $name Table name to query against
-     * @throws PipeException
-     * @see    Table
-     * @return Table
-     */
     public static function table($name)
     {
-        $config = Pipe\Singleton::instance('config');
-        
-        $sth     = $config->adapter->column_info($name);
-        $results = $sth->fetchAll();
-        
-        //Lets fetch the columns in the table
-        $cols = array();
-        
-        foreach($results as $row)
-        {
-            $cols[] = $row['field'];
-        }
-        
-        //Make sure table has an ID field
-        if(!in_array('id', $cols))
-        {
-            throw new PipeException("Table `$name` must contain an `id` column");
-        }
-        
-        //Set config for table
-        $config->table   = $name;
-        $config->columns = $cols;
-        
-        return new Pipe\Table;
+        return new Pipe\Table($name);
     }
 }
 

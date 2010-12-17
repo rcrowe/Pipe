@@ -2,19 +2,19 @@
 
 namespace Pipe;
 
-class SQLBuilder {
-
+class SQL
+{
     private $table;
-
+    
     private $select_str;
     private $where_str;
     private $like_str;
     private $orderby_str;
     private $limit_offset_str;
 
-    public function __construct($table)
+    public function __construct($name)
     {
-        $this->table = $table;
+        $this->table = $name;
     }
     
     public function clear()
@@ -31,6 +31,7 @@ class SQLBuilder {
         if(is_array($select))
         {
             $select_str        = strtolower(implode(',', $select));
+            
             $this->select_str .= $select_str;
         }
         else
@@ -63,7 +64,7 @@ class SQLBuilder {
         }
     }
     
-    public function or_where($key, $value, $operater)
+    public function or_where($key, $value, $operator)
     {
         $this->where($key, $value, $operator, 'OR');
     }
@@ -76,12 +77,12 @@ class SQLBuilder {
     public function order_by($field, $dir)
     {
         $dir = (strtoupper($dir) == 'ASC') ? 'ASC' : 'DESC';
-        $this->orderby_str = "ORDER BY '$field' $dir";
+        $this->orderby_str = "ORDER BY $field $dir";
     }
     
-    public function limit($sql)
+    public function limit($limit, $offset)
     {
-        $this->limit_offset_str = $sql;
+        $this->limit_offset_str = "LIMIT $offset,$limit";
     }
     
     //Builds SQL string
@@ -93,6 +94,7 @@ class SQLBuilder {
         if(strlen($this->select_str) > 0)
         {
             //Make sure request includes ID, this is needed by Pipe
+            //Dont think it matters if we have a duplicate
             $sql .= 'id,'.$this->select_str;
         }
         else
@@ -114,9 +116,7 @@ class SQLBuilder {
         //Handle LIMIT & OFFSET
         $sql .= (strlen($this->limit_offset_str) > 0) ? $this->limit_offset_str.' ' : '';
         
-        echo "SQL: $sql\n";
-
-        return $sql;
+        return trim($sql);
     }
 }
 
