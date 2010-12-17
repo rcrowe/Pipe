@@ -1,0 +1,116 @@
+<html>
+<head>
+<title>README.md</title>
+<link rel="stylesheet" type="text/css" href="media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">Pipe</td>
+  </tr>
+  <tr><td class="header_line"><img src="media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                              		  [ <a href="classtrees_Pipe.html" class="menu">class tree: Pipe</a> ]
+		  [ <a href="elementindex_Pipe.html" class="menu">index: Pipe</a> ]
+		  	    [ <a href="elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+	<div id="ric">
+					<p><a href="ric_README.md.html">README.md</a></p>
+			</div>
+      <b>Packages:</b><br />
+              <a href="li_Pipe.html">Pipe</a><br />
+            <br /><br />
+                  
+      
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1 align="center">README.md</h1>
+<pre>
+Pipe
+====
+
+Pipe is a simple ORM for PHP that makes use of the ActiveRecord pattern. It was initially written for cases when you 
+don't want to adhere to an MVC pattern with models, something that the current ORM solutions do not provide.
+
+Pipe is built upon PDO which means it can be used across many different types of databases with the same API. Pipe currently
+has adapters for MySQL, SQLite and PostgreSQL.
+
+Requirements
+------------
+
+* [mandatory] PHP version 5.3 (developed using 5.3.1)
+
+Pipe makes use of [PDO](http://php.net/manual/en/book.pdo.php) for querying the database.
+
+Make sure you have the drivers available for your chosen database. Currently supported databases:
+
+* MySQL
+* SQLite
+* PostgreSQL
+
+Example
+--------
+
+    &lt;?php
+    
+    require 'Pipe.php';
+    
+    Pipe::initialize(function($cfg){
+       $cfg-&gt;connection('mysql://root:root@localhost/project');
+    });
+    
+    //Select the `users` table
+    $users = Pipe::table('users');
+    
+    //Select row `2` from `id` column
+    //Short hand for: $users-&gt;select('*')-&gt;where('id', 2)-&gt;get()
+    $users-&gt;get_by_id(2);
+    
+    //Change first name to Rob
+    $users-&gt;first_name = 'Rob';
+    
+    //Make the change
+    $users-&gt;save();
+    
+    ?&gt;
+
+Docs
+----
+
+Documentation is generated directly from the source code using PhpDocumentator.
+
+To regenerate: rm -r docs &amp;&amp; phpdoc -c phpdoc.ini
+
+License
+-------
+
+Copyright 2010, Robert Crowe `hello@vivalacrowe.com`
+
+Licensed under [The MIT License](http://www.opensource.org/licenses/mit-license.php)
+Redistributions of files must retain the above copyright notice.
+
+</pre>
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Fri, 17 Dec 2010 18:14:14 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>

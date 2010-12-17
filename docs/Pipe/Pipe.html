@@ -1,0 +1,217 @@
+<html>
+<head>
+<title>Docs For Class Pipe</title>
+<link rel="stylesheet" type="text/css" href="../media/style.css">
+</head>
+<body>
+
+<table border="0" cellspacing="0" cellpadding="0" height="48" width="100%">
+  <tr>
+    <td class="header_top">Pipe</td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+  <tr>
+    <td class="header_menu">
+        
+                                    
+                              		  [ <a href="../classtrees_Pipe.html" class="menu">class tree: Pipe</a> ]
+		  [ <a href="../elementindex_Pipe.html" class="menu">index: Pipe</a> ]
+		  	    [ <a href="../elementindex.html" class="menu">all elements</a> ]
+    </td>
+  </tr>
+  <tr><td class="header_line"><img src="../media/empty.png" width="1" height="1" border="0" alt=""  /></td></tr>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr valign="top">
+    <td width="200" class="menu">
+	<div id="ric">
+					<p><a href="../ric_README.md.html">README.md</a></p>
+			</div>
+      <b>Packages:</b><br />
+              <a href="../li_Pipe.html">Pipe</a><br />
+            <br /><br />
+                        <b>Files:</b><br />
+      	  <div class="package">
+			<a href="../Pipe/_lib---Config.php.html">		Config.php
+		</a><br>
+			<a href="../Pipe/_lib---Connection.php.html">		Connection.php
+		</a><br>
+			<a href="../Pipe/_lib---Exceptions.php.html">		Exceptions.php
+		</a><br>
+			<a href="../Pipe/_Pipe.php.html">		Pipe.php
+		</a><br>
+			<a href="../Pipe/_lib---SQL.php.html">		SQL.php
+		</a><br>
+			<a href="../Pipe/_lib---Table.php.html">		Table.php
+		</a><br>
+	  </div><br />
+      
+      
+            <b>Classes:</b><br />
+        <div class="package">
+		    		<a href="../Pipe/Config.html">Config</a><br />
+	    		<a href="../Pipe/Connection.html">Connection</a><br />
+	    		<a href="../Pipe/Pipe.html">Pipe</a><br />
+	    		<a href="../Pipe/PipeException.html">PipeException</a><br />
+	    		<a href="../Pipe/SQL.html">SQL</a><br />
+	    		<a href="../Pipe/Table.html">Table</a><br />
+	  </div>
+                </td>
+    <td>
+      <table cellpadding="10" cellspacing="0" width="100%" border="0"><tr><td valign="top">
+
+<h1>Class: Pipe</h1>
+Source Location: /Pipe.php<br /><br />
+
+
+<table width="100%" border="0">
+<tr><td valign="top">
+
+<h3><a href="#class_details">Class Overview</a></h3>
+<pre></pre><br />
+<div class="description">Pipe</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>Robert Crowe &lt;<a href="mailto:hello@vivalacrowe.com">hello@vivalacrowe.com</a>&gt;</li>
+      </ul>
+
+
+
+
+    
+
+        
+</td>
+
+
+
+<td valign="top">
+<h3><a href="#class_methods">Methods</a></h3>
+<ul>
+    <li><a href="../Pipe/Pipe.html#methodinitialise">initialise</a></li>
+    <li><a href="../Pipe/Pipe.html#methodtable">table</a></li>
+  </ul>
+</td>
+
+</tr></table>
+<hr />
+
+<table width="100%" border="0"><tr>
+
+
+
+
+
+
+</tr></table>
+<hr />
+
+<a name="class_details"></a>
+<h3>Class Details</h3>
+<div class="tags">
+[line 52]<br />
+Pipe<br /><br /><p>Bootstraps the Pipe library. Sets the config and returns an instance of Table to query the database with.</p><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>Robert Crowe &lt;<a href="mailto:hello@vivalacrowe.com">hello@vivalacrowe.com</a>&gt;</td>
+  </tr>
+</table>
+</div>
+</div><br /><br />
+<div class="top">[ <a href="#top">Top</a> ]</div><br />
+
+
+<hr />
+<a name="class_methods"></a>
+<h3>Class Methods</h3>
+<div class="tags">
+  <hr />
+	<a name="methodinitialise"></a>
+	<h3>static method initialise <span class="smalllinenumber">[line 60]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>static void initialise(
+Closure
+$config)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		Initialise Pipe. Sets config and connection to database<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">Closure&nbsp;&nbsp;</td>
+        <td><b>$config</b>&nbsp;&nbsp;</td>
+        <td>Anonymous function with a single parameter which an instance of Pipe\Config is passed.</td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+  <hr />
+	<a name="methodtable"></a>
+	<h3>static method table <span class="smalllinenumber">[line 66]</span></h3>
+	<div class="function">
+    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
+    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
+		<code>static void table(
+
+$name)</code>
+    </td></tr></table>
+    </td></tr></table><br />
+	
+		<br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
+  </tr>
+</table>
+</div>
+<br /><br />
+
+	
+        <h4>Parameters:</h4>
+    <div class="tags">
+    <table border="0" cellspacing="0" cellpadding="0">
+          <tr>
+        <td class="type">&nbsp;&nbsp;</td>
+        <td><b>$name</b>&nbsp;&nbsp;</td>
+        <td></td>
+      </tr>
+        </table>
+    </div><br />
+        <div class="top">[ <a href="#top">Top</a> ]</div>
+  </div>
+
+</div><br />
+
+
+        <div class="credit">
+		    <hr />
+		    Documentation generated on Fri, 17 Dec 2010 18:14:15 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+	      </div>
+      </td></tr></table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
