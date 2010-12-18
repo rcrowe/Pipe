@@ -8,6 +8,7 @@
  * @author      Robert Crowe <hello@vivalacrowe.com>
  * @link        http://vivalacrowe.com
  * @copyright   2010 Robert Crowe
+ * @package     Pipe
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -39,8 +40,8 @@ use PDOException;
  *
  * Takes the DSN and creates a PDO connection to the MySQL DB
  *
- * @package     Pipe
- * @author      Robert Crowe <hello@vivalacrowe.com>
+ * @package Pipe
+ * @author  Robert Crowe <hello@vivalacrowe.com>
  */
 class Connection
 {
@@ -148,8 +149,8 @@ class Connection
     /**
      * Returns the passed DSN
      *
-     * @intenral Used for testing
-     * @return Object
+     * @internal Used for testing
+     * @return   Object
      */
     public function dsnInfo()
     {
