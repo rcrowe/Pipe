@@ -131,6 +131,8 @@ class PipeTableTests extends UnitTestCase
         
         $result = $users->query($sql);
         
+        $this->assertIsA($result, 'PDOStatement');
+        
         //Get the result, only one row
         $row = $result->fetch();
         
