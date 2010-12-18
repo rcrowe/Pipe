@@ -88,10 +88,10 @@ class PipeConnectionTests extends UnitTestCase
         $info     = $instance->dsnInfo();
         
         $this->assertIdentical($info->protocol, 'mysql');
-        $this->assertIdentical($info->host, 'localhost');
-        $this->assertIdentical($info->user, 'root');
-        $this->assertIdentical($info->pass, 'root');
-        $this->assertIdentical($info->db, 'PipeTest');
+        $this->assertIdentical($info->host, HOST);
+        $this->assertIdentical($info->user, USERNAME);
+        $this->assertIdentical($info->pass, PASSWORD);
+        $this->assertIdentical($info->db,   TABLE);
     }
     
     //Test Exception is thrown when cant connect to a database

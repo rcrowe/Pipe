@@ -28,7 +28,7 @@ class PipeTests extends UnitTestCase
         });
         
         $dsn = Pipe\Config::instance()->connection();
-        $this->assertIdentical($dsn, 'mysql://root:root@localhost/PipeTest');
+        $this->assertIdentical($dsn, DSN);
     }
     
     //Test we can see what environment we are running on
