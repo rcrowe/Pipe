@@ -8,6 +8,7 @@
  * @author      Robert Crowe <hello@vivalacrowe.com>
  * @link        http://vivalacrowe.com
  * @copyright   2010 Robert Crowe
+ * @package     Pipe
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
