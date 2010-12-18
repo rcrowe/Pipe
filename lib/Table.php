@@ -1,5 +1,35 @@
 <?php
 
+/**
+ * Pipe
+ *
+ * A simple ORM without models
+ *
+ * @author      Robert Crowe <hello@vivalacrowe.com>
+ * @link        http://vivalacrowe.com
+ * @copyright   2010 Robert Crowe
+ * @package     Pipe
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject to
+ * the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be
+ * included in all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+ * EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+ * NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION
+ * OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION
+ * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
+
 namespace Pipe;
 
 require_once 'SQL.php';
@@ -7,24 +37,65 @@ require_once 'SQL.php';
 use PDO;
 use PDOException;
 
+/**
+ * Provides the ActiveRecord pattern for accessing and manipulating a table in the database.
+ *
+ * @package Pipe
+ * @author  Robert Crowe <hello@vivalacrowe.com>
+ */
 class Table
 {
+    /**
+     * Instance of Pipe\Config
+     */
     private $config;
+    
+    /**
+     * Instance of Pipe\Connection
+     */
     private $connection;
+    
+    /**
+     * Instance of Pipe\SQL
+     */
     private $sql;
     
+    /**
+     * Name of table accessing
+     */
     private $table;
+    
+    /**
+     * Array of columns in the selected table
+     */
     private $columns;
     
-    //Copy of result to check for a change against
+    /**
+     * Copy of data is stored to check for a change against when making a save
+     */
     private $store;
     
-    //Stores all results
+    /**
+     * All the results returned from the query
+     */
     public $all = array();
     
-    //Previous SQL statement
+    /**
+     * SQL from the last query
+     *
+     * @internal Mainly here for testing
+     */
     public $lastSQL;
 
+    /**
+     * Table constructor. Returns instance of Pipe\Table to query against. If the table does not
+     * exist a PDOException is thrown.
+     *
+     * @param  string $name Name of table
+     * @throws PDOException
+     * @throws PipeException
+     * @return Pipe\Table
+     */
     public function __construct($name)
     {
         if(!is_string($name) || strlen($name) === 0)
@@ -48,13 +119,23 @@ class Table
         }
     }
     
-    //Return table name
+    /**
+     * Table name
+     *
+     * @return string
+     */
     public function table()
     {
         return $this->table;
     }
-    
-    //Returns array of columns in specified table
+
+    /**
+     * Columns in the table
+     *
+     * @throws PDOException
+     * @throws PipeException
+     * @return Array
+     */
     public function columns()
     {
         $sth     = $this->query("SHOW COLUMNS FROM $this->table");
@@ -71,9 +152,13 @@ class Table
         return $cols;
     }
     
-    //Make a raw SQL query
-    //You must manually handle the results, Pipe does not store them
-    //@return PDOStatement
+    /**
+     * Make a raw SQL query
+     *
+     * @throws PDOException
+     * @throws PipeException
+     * @return PDOStatement
+     */
     public function query($sql, $values = array())
     {
         //Record SQL statement
@@ -94,7 +179,9 @@ class Table
         return $sth;
     }
     
-    //Clear any previous results
+    /**
+     * Clear any previous results and generated SQL. Important this is called before multiple calls.
+     */
     public function clear()
     {
         $this->all = null;
@@ -108,8 +195,10 @@ class Table
         $this->refresh_store();
     }
     
-    //Stores result to test for a change against
-    public function refresh_store()
+    /**
+     * Store first result to test for a change against. Used when making a save.
+     */
+    private function refresh_store()
     {
         foreach($this->columns as $field)
         {
@@ -117,36 +206,79 @@ class Table
         }
     }
     
+    /**
+     * Build SELECT statement
+     *
+     * @param string|Array $select Columns to select
+     * @return Pipe\Table Instance of table so calls can be chained
+     */
     public function select($select)
     {
         $this->sql->select($select);
         return $this;
     }
     
+    /**
+     * Build WHERE statement
+     *
+     * @param string  $field    Field to select
+     * @param various $value    Value to compare against
+     * @param string  $operator Logical operator to use. Defaults to `=`
+     * @param string  $type     Joining string for multiple statements. Defaults to `AND`
+     * @return Pipe\Table Instance of table so calls can be chained
+     */
     public function where($field, $value = null, $operator = '=', $type = 'AND')
     {
         $this->sql->where($field, $value, $operator, $type);
         return $this;
     }
     
+    /**
+     * Shorthand for OR WHERE. Wrapper around SQL::where()
+     *
+     * @param string  $field Field to select
+     * @param various $value Value to compare against
+     * @param string  $operator Logical operator to use
+     * @return Pipe\Table Instance of table so calls can be chained
+     */
     public function or_where($key, $value, $operator = '=')
     {
         $this->sql->or_where($key, $value, $operator);
         return $this;
     }
     
+    /**
+     * Build LIKE statement
+     *
+     * @param string $field Use `%` for a wildcard
+     * @return Pipe\Table Instance of table so calls can be chained
+     */
     public function like($field)
     {
         $this->sql->like($field);
         return $this;
     }
     
+    /**
+     * Build ORDER BY statement
+     *
+     * @param string $field Field to order by
+     * @param string $dir   Direction to order by. Accepts ASC or DESC. Defaults to ASC
+     * @return Pipe\Table Instance of table so calls can be chained
+     */
     public function order_by($field, $direction = 'ASC')
     {
         $this->sql->order_by($field, $direction);
         return $this;
     }
     
+    /**
+     * Build LIMIT and offset statement
+     *
+     * @param int $limit  Number to limit by
+     * @param int $offset Number of records to offset by. Defaults to 0
+     * @return Pipe\Table Instance of table so calls can be chained
+     */
     public function limit($limit, $offset = 0)
     {
         //Make sure we arent passed NULL in
@@ -158,6 +290,14 @@ class Table
     }
 
     //Handles get_by_* calls
+    /**
+     * Handles get_by_### calls. Append the name of column to the function, to return all the results.
+     * Is a wrapper around the where(###, $value, '=')->get() call.
+     *
+     * @throws PDOException
+     * @throws PipeException
+     * @param various $args Value of the WHERE statement. 
+     */
     public function __call($method, $args)
     {
         if(strpos($method, 'get_by_') !== FALSE)
@@ -175,11 +315,19 @@ class Table
                 $this->where($field, $args[0], '=', 'AND');
             }
             
-            return $this->get();
+            $this->get();
         }
     }
-    
-    //Only supports equal where statement
+
+    /**
+     * Wrapper around get() and where()
+     *
+     * @param Array $where  Array of where statements. $key => $val. Only supports `=`
+     * @param int   $limit  Number of records to limit by
+     * @param int   $offset Number of records to offset by
+     * @throws PDOException
+     * @throws PipeException
+     */
     public function get_where($where, $limit = NULL, $offset = NULL)
     {
         if(!is_array($where))
@@ -193,15 +341,22 @@ class Table
         }
         
         //Loop through each where item
-        //TODO: Need to put some checking in here, otherwise you can pass in a bad array format
+        //TODO: Need to put some checking in here, otherwise you can pass in a bad array
         foreach($where as $field => $val)
         {
             $this->where($field, $val);
         }
         
-        return $this->get();
+        $this->get();
     }
 
+    /**
+     * Gets the records based on the previous functions called. If only get() is called
+     * returns all records.
+     *
+     * @throws PDOException
+     * @throws PipeException
+     */
     public function get()
     {
         $sql = $this->sql->get();
@@ -234,24 +389,44 @@ class Table
         $this->refresh_store();
     }
     
-    //Returns the store of data. This is used to check for changes against
-    //when making a save
-    //Included here mainly for testing purposes
+    /**
+     * Returns current store. Used for checking for changes when a save is made.
+     *
+     * @internal Included here for testing
+     * @see Pipe\Table::store
+     * @return Array
+     */
     public function store()
     {
         return $this->store;
     }
     
+    /**
+     * Number of records returned from the previous query
+     *
+     * @return int
+     */
     public function count()
     {
         return count($this->all);
     }
     
+    /**
+     * Whether any records were returned from the last query
+     *
+     * @return bool
+     */
     public function exists()
     {
         return (!empty($this->id));
     }
     
+    /**
+     * Either save a new record or update an existing record.
+     *
+     * @throws PDOException
+     * @throws PipeException
+     */
     public function save()
     {
         if(!is_null($this->id))
@@ -266,6 +441,13 @@ class Table
         }
     }
 
+    /**
+     * When an `ID` is present, the record is updated
+     *
+     * @see Pipe\Table::save()
+     * @throws PDOException
+     * @throws PipeException
+     */
     private function save_update()
     {
         $set = array();
@@ -282,7 +464,7 @@ class Table
         //Check we have something to change
         if(count($set) === 0)
         {
-            return;
+            return false;
         }
         
         //If table contains update_field, set update time
@@ -302,6 +484,13 @@ class Table
         $this->refresh_store();
     }
 
+    /**
+     * When an `ID` is not present, the record is created
+     *
+     * @see Pipe\Table::save()
+     * @throws PDOException
+     * @throws PipeException
+     */
     private function save_insert()
     {
         $columns = array();
@@ -344,6 +533,12 @@ class Table
         $this->refresh_store();
     }
 
+    /**
+     * When an `ID` is present, that record is deleted
+     *
+     * @throws PDOException
+     * @throws PipeException
+     */
     public function delete()
     {
         if(!is_null($this->id))
