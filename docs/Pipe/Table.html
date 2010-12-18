@@ -28,6 +28,9 @@
 	<div id="ric">
 					<p><a href="../ric_README.md.html">README.md</a></p>
 			</div>
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
       <b>Packages:</b><br />
               <a href="../li_Pipe.html">Pipe</a><br />
             <br /><br />
@@ -70,12 +73,16 @@ Source Location: /lib/Table.php<br /><br />
 
 <h3><a href="#class_details">Class Overview</a></h3>
 <pre></pre><br />
-<div class="description"></div><br /><br />
+<div class="description">Provides the ActiveRecord pattern for accessing and manipulating a table in the database.</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>Robert Crowe &lt;<a href="mailto:hello@vivalacrowe.com">hello@vivalacrowe.com</a>&gt;</li>
+      </ul>
 
 
 
 
-
+    
 
         
 </td>
@@ -105,7 +112,6 @@ Source Location: /lib/Table.php<br /><br />
     <li><a href="../Pipe/Table.html#methodorder_by">order_by</a></li>
     <li><a href="../Pipe/Table.html#methodor_where">or_where</a></li>
     <li><a href="../Pipe/Table.html#methodquery">query</a></li>
-    <li><a href="../Pipe/Table.html#methodrefresh_store">refresh_store</a></li>
     <li><a href="../Pipe/Table.html#methodsave">save</a></li>
     <li><a href="../Pipe/Table.html#methodselect">select</a></li>
     <li><a href="../Pipe/Table.html#methodstore">store</a></li>
@@ -131,7 +137,16 @@ Source Location: /lib/Table.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 10]<br />
+[line 46]<br />
+Provides the ActiveRecord pattern for accessing and manipulating a table in the database.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>Robert Crowe &lt;<a href="mailto:hello@vivalacrowe.com">hello@vivalacrowe.com</a>&gt;</td>
+  </tr>
+</table>
+</div>
 </div><br /><br />
 <div class="top">[ <a href="#top">Top</a> ]</div><br />
 
@@ -142,8 +157,8 @@ Source Location: /lib/Table.php<br /><br />
 	<a name="var$all"></a>
 	<p></p>
 	<h4>$all = <span class="value">array()</span></h4>
-	<p>[line 23]</p>
-  <br /><br />
+	<p>[line 81]</p>
+  All the results returned from the query<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -166,8 +181,8 @@ Source Location: /lib/Table.php<br /><br />
 	<a name="var$lastSQL"></a>
 	<p></p>
 	<h4>$lastSQL = <span class="value"></span></h4>
-	<p>[line 26]</p>
-  <br /><br />
+	<p>[line 88]</p>
+  SQL from the last query<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -196,20 +211,26 @@ Source Location: /lib/Table.php<br /><br />
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 28]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 99]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>Table __construct(
-
+		<code>Pipe\Table __construct(
+string
 $name)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Table constructor. Returns instance of Pipe\Table to query against. If the table does not  exist a PDOException is thrown.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PipeException</td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PDOException</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -222,9 +243,9 @@ $name)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Name of table</td>
       </tr>
         </table>
     </div><br />
@@ -232,7 +253,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodclear"></a>
-	<h3>method clear <span class="smalllinenumber">[line 98]</span></h3>
+	<h3>method clear <span class="smalllinenumber">[line 183]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -241,7 +262,7 @@ $name)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Clear any previous results and generated SQL. Important this is called before multiple calls.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -257,16 +278,16 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodcolumns"></a>
-	<h3>method columns <span class="smalllinenumber">[line 58]</span></h3>
+	<h3>method columns <span class="smalllinenumber">[line 137]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void columns(
+		<code>Array columns(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Columns in the table<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -282,7 +303,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodcount"></a>
-	<h3>method count <span class="smalllinenumber">[line 245]</span></h3>
+	<h3>method count <span class="smalllinenumber">[line 332]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -307,7 +328,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methoddelete"></a>
-	<h3>method delete <span class="smalllinenumber">[line 347]</span></h3>
+	<h3>method delete <span class="smalllinenumber">[line 434]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -332,7 +353,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodexists"></a>
-	<h3>method exists <span class="smalllinenumber">[line 250]</span></h3>
+	<h3>method exists <span class="smalllinenumber">[line 337]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -357,7 +378,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodget"></a>
-	<h3>method get <span class="smalllinenumber">[line 205]</span></h3>
+	<h3>method get <span class="smalllinenumber">[line 292]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -382,7 +403,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodget_where"></a>
-	<h3>method get_where <span class="smalllinenumber">[line 183]</span></h3>
+	<h3>method get_where <span class="smalllinenumber">[line 270]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -430,7 +451,7 @@ $offset = NULL])</code>
   </div>
   <hr />
 	<a name="methodlike"></a>
-	<h3>method like <span class="smalllinenumber">[line 138]</span></h3>
+	<h3>method like <span class="smalllinenumber">[line 225]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -466,7 +487,7 @@ $field)</code>
   </div>
   <hr />
 	<a name="methodlimit"></a>
-	<h3>method limit <span class="smalllinenumber">[line 150]</span></h3>
+	<h3>method limit <span class="smalllinenumber">[line 237]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -508,7 +529,7 @@ $offset = 0])</code>
   </div>
   <hr />
 	<a name="methodorder_by"></a>
-	<h3>method order_by <span class="smalllinenumber">[line 144]</span></h3>
+	<h3>method order_by <span class="smalllinenumber">[line 231]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -550,7 +571,7 @@ $direction = 'ASC'])</code>
   </div>
   <hr />
 	<a name="methodor_where"></a>
-	<h3>method or_where <span class="smalllinenumber">[line 132]</span></h3>
+	<h3>method or_where <span class="smalllinenumber">[line 219]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -598,21 +619,27 @@ $operator = '='])</code>
   </div>
   <hr />
 	<a name="methodquery"></a>
-	<h3>method query <span class="smalllinenumber">[line 77]</span></h3>
+	<h3>method query <span class="smalllinenumber">[line 160]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void query(
+		<code>PDOStatement query(
 
 $sql, [
 $values = array()])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Make a raw SQL query<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PipeException</td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PDOException</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -639,33 +666,8 @@ $values = array()])</code>
         <div class="top">[ <a href="#top">Top</a> ]</div>
   </div>
   <hr />
-	<a name="methodrefresh_store"></a>
-	<h3>method refresh_store <span class="smalllinenumber">[line 112]</span></h3>
-	<div class="function">
-    <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
-    <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void refresh_store(
-)</code>
-    </td></tr></table>
-    </td></tr></table><br />
-	
-		<br /><br />
-<h4>Tags:</h4>
-<div class="tags">
-<table border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
-  </tr>
-</table>
-</div>
-<br /><br />
-
-	
-        <div class="top">[ <a href="#top">Top</a> ]</div>
-  </div>
-  <hr />
 	<a name="methodsave"></a>
-	<h3>method save <span class="smalllinenumber">[line 255]</span></h3>
+	<h3>method save <span class="smalllinenumber">[line 342]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -690,7 +692,7 @@ $values = array()])</code>
   </div>
   <hr />
 	<a name="methodselect"></a>
-	<h3>method select <span class="smalllinenumber">[line 120]</span></h3>
+	<h3>method select <span class="smalllinenumber">[line 207]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -726,7 +728,7 @@ $select)</code>
   </div>
   <hr />
 	<a name="methodstore"></a>
-	<h3>method store <span class="smalllinenumber">[line 240]</span></h3>
+	<h3>method store <span class="smalllinenumber">[line 327]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -751,16 +753,16 @@ $select)</code>
   </div>
   <hr />
 	<a name="methodtable"></a>
-	<h3>method table <span class="smalllinenumber">[line 52]</span></h3>
+	<h3>method table <span class="smalllinenumber">[line 127]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void table(
+		<code>string table(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Table name<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -776,7 +778,7 @@ $select)</code>
   </div>
   <hr />
 	<a name="methodwhere"></a>
-	<h3>method where <span class="smalllinenumber">[line 126]</span></h3>
+	<h3>method where <span class="smalllinenumber">[line 213]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -830,7 +832,7 @@ $type = 'AND'])</code>
   </div>
   <hr />
 	<a name="method__call"></a>
-	<h3>method __call <span class="smalllinenumber">[line 161]</span></h3>
+	<h3>method __call <span class="smalllinenumber">[line 248]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -875,7 +877,7 @@ $args)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 18 Dec 2010 14:31:44 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Sat, 18 Dec 2010 19:16:59 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

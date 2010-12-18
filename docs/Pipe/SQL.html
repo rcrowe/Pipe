@@ -28,6 +28,9 @@
 	<div id="ric">
 					<p><a href="../ric_README.md.html">README.md</a></p>
 			</div>
+	<div id="todolist">
+			<p><a href="../todolist.html">Todo List</a></p>
+	</div>
       <b>Packages:</b><br />
               <a href="../li_Pipe.html">Pipe</a><br />
             <br /><br />
@@ -70,12 +73,16 @@ Source Location: /lib/SQL.php<br /><br />
 
 <h3><a href="#class_details">Class Overview</a></h3>
 <pre></pre><br />
-<div class="description"></div><br /><br />
+<div class="description">Builds the SQL statement for a get() request.</div><br /><br />
+<h4>Author(s):</h4>
+<ul>
+          <li>Robert Crowe &lt;<a href="mailto:hello@vivalacrowe.com">hello@vivalacrowe.com</a>&gt;</li>
+            </ul>
 
 
 
 
-
+        
 
         
 </td>
@@ -113,7 +120,19 @@ Source Location: /lib/SQL.php<br /><br />
 <a name="class_details"></a>
 <h3>Class Details</h3>
 <div class="tags">
-[line 5]<br />
+[line 42]<br />
+Builds the SQL statement for a get() request.<br /><br /><br /><br />
+<h4>Tags:</h4>
+<div class="tags">
+<table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>author:</b>&nbsp;&nbsp;</td><td>Robert Crowe &lt;<a href="mailto:hello@vivalacrowe.com">hello@vivalacrowe.com</a>&gt;</td>
+  </tr>
+  <tr>
+    <td><b>todo:</b>&nbsp;&nbsp;</td><td>Move all SQL out of Pipe\Table here</td>
+  </tr>
+</table>
+</div>
 </div><br /><br />
 <div class="top">[ <a href="#top">Top</a> ]</div><br />
 
@@ -125,17 +144,17 @@ Source Location: /lib/SQL.php<br /><br />
 
   <hr />
 	<a name="method__construct"></a>
-	<h3>constructor __construct <span class="smalllinenumber">[line 15]</span></h3>
+	<h3>constructor __construct <span class="smalllinenumber">[line 79]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>SQL __construct(
-
+string
 $name)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Pipe\SQL constructor<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -151,9 +170,9 @@ $name)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$name</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Name of table querying</td>
       </tr>
         </table>
     </div><br />
@@ -161,7 +180,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodclear"></a>
-	<h3>method clear <span class="smalllinenumber">[line 20]</span></h3>
+	<h3>method clear <span class="smalllinenumber">[line 87]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -170,7 +189,7 @@ $name)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Clears currently built SQL statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -186,16 +205,16 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodget"></a>
-	<h3>method get <span class="smalllinenumber">[line 89]</span></h3>
+	<h3>method get <span class="smalllinenumber">[line 196]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void get(
+		<code>string get(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Generates the SQL. If get is only method called then will return all records.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -211,17 +230,17 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodlike"></a>
-	<h3>method like <span class="smalllinenumber">[line 72]</span></h3>
+	<h3>method like <span class="smalllinenumber">[line 163]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void like(
-
+string
 $field)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Build LIKE statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -237,9 +256,9 @@ $field)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$field</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Use `%` for a wildcard</td>
       </tr>
         </table>
     </div><br />
@@ -247,18 +266,18 @@ $field)</code>
   </div>
   <hr />
 	<a name="methodlimit"></a>
-	<h3>method limit <span class="smalllinenumber">[line 83]</span></h3>
+	<h3>method limit <span class="smalllinenumber">[line 186]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void limit(
-
-$limit, 
+int
+$limit, int
 $offset)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Build LIMIT and offset statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -274,14 +293,14 @@ $offset)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">int&nbsp;&nbsp;</td>
         <td><b>$limit</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Number to limit by</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">int&nbsp;&nbsp;</td>
         <td><b>$offset</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Number of records to offset by</td>
       </tr>
         </table>
     </div><br />
@@ -289,18 +308,18 @@ $offset)</code>
   </div>
   <hr />
 	<a name="methodorder_by"></a>
-	<h3>method order_by <span class="smalllinenumber">[line 77]</span></h3>
+	<h3>method order_by <span class="smalllinenumber">[line 174]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void order_by(
-
-$field, 
+string
+$field, string
 $dir)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Build ORDER BY statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -316,14 +335,14 @@ $dir)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$field</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Field to order by</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$dir</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Direction to order by. Accepts ASC or DESC.</td>
       </tr>
         </table>
     </div><br />
@@ -331,19 +350,19 @@ $dir)</code>
   </div>
   <hr />
 	<a name="methodor_where"></a>
-	<h3>method or_where <span class="smalllinenumber">[line 67]</span></h3>
+	<h3>method or_where <span class="smalllinenumber">[line 153]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void or_where(
-
-$key, 
-$value, 
+string
+$field, various
+$value, string
 $operator)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Builds SQL for shorthand method or_where. Wrapper around SQL::where()<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -359,19 +378,19 @@ $operator)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$key</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$field</b>&nbsp;&nbsp;</td>
+        <td>Field to select</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">various&nbsp;&nbsp;</td>
         <td><b>$value</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Value to compare against</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$operator</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Logical operator to use</td>
       </tr>
         </table>
     </div><br />
@@ -379,17 +398,17 @@ $operator)</code>
   </div>
   <hr />
 	<a name="methodselect"></a>
-	<h3>method select <span class="smalllinenumber">[line 29]</span></h3>
+	<h3>method select <span class="smalllinenumber">[line 101]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void select(
-
+string|Array
 $select)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Columns to select<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -405,9 +424,9 @@ $select)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string|Array&nbsp;&nbsp;</td>
         <td><b>$select</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Columns to select</td>
       </tr>
         </table>
     </div><br />
@@ -415,20 +434,20 @@ $select)</code>
   </div>
   <hr />
 	<a name="methodwhere"></a>
-	<h3>method where <span class="smalllinenumber">[line 46]</span></h3>
+	<h3>method where <span class="smalllinenumber">[line 125]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void where(
-
-$field, 
-$value, 
-$operator, 
+string
+$field, various
+$value, string
+$operator, string
 $type)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Build WHERE statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -444,24 +463,24 @@ $type)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$field</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Field to select</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">various&nbsp;&nbsp;</td>
         <td><b>$value</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Value to compare against</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$operator</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Logical operator to use</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$type</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Joining string for multiple statements</td>
       </tr>
         </table>
     </div><br />
@@ -472,7 +491,7 @@ $type)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 18 Dec 2010 14:31:44 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Sat, 18 Dec 2010 19:16:59 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
