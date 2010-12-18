@@ -46,12 +46,12 @@ Docs
 
 Documentation is generated directly from the source code using PhpDocumentator.
 
-To regenerate: rm -r docs && phpdoc -c phpdoc.ini
+To regenerate: `rm -r docs && phpdoc -c phpdoc.ini`
 
 Unit Tests
 ----------
 
-Pipe uses SimpleTest for unit testing. Run php -f AllTests.php in the `tests` folder.
+Pipe uses SimpleTest for unit testing. Run `php -f AllTests.php` in the `tests` folder.
 
 License
 -------
