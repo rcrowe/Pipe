@@ -253,7 +253,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodclear"></a>
-	<h3>method clear <span class="smalllinenumber">[line 183]</span></h3>
+	<h3>method clear <span class="smalllinenumber">[line 185]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -278,7 +278,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodcolumns"></a>
-	<h3>method columns <span class="smalllinenumber">[line 137]</span></h3>
+	<h3>method columns <span class="smalllinenumber">[line 139]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -292,6 +292,12 @@ $name)</code>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
   <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PipeException</td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PDOException</td>
+  </tr>
+  <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
 </table>
@@ -303,16 +309,16 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodcount"></a>
-	<h3>method count <span class="smalllinenumber">[line 332]</span></h3>
+	<h3>method count <span class="smalllinenumber">[line 409]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void count(
+		<code>int count(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Number of records returned from the previous query<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -328,7 +334,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methoddelete"></a>
-	<h3>method delete <span class="smalllinenumber">[line 434]</span></h3>
+	<h3>method delete <span class="smalllinenumber">[line 542]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -337,10 +343,16 @@ $name)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		When an `ID` is present, that record is deleted<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PipeException</td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PDOException</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -353,16 +365,16 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodexists"></a>
-	<h3>method exists <span class="smalllinenumber">[line 337]</span></h3>
+	<h3>method exists <span class="smalllinenumber">[line 419]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void exists(
+		<code>bool exists(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Whether any records were returned from the last query<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
@@ -378,7 +390,7 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodget"></a>
-	<h3>method get <span class="smalllinenumber">[line 292]</span></h3>
+	<h3>method get <span class="smalllinenumber">[line 360]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -387,10 +399,16 @@ $name)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Gets the records based on the previous functions called. If only get() is called  returns all records.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PipeException</td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PDOException</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -403,22 +421,28 @@ $name)</code>
   </div>
   <hr />
 	<a name="methodget_where"></a>
-	<h3>method get_where <span class="smalllinenumber">[line 270]</span></h3>
+	<h3>method get_where <span class="smalllinenumber">[line 331]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void get_where(
-
-$where, [
-$limit = NULL], [
+Array
+$where, [int
+$limit = NULL], [int
 $offset = NULL])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Wrapper around get() and where()<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PipeException</td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PDOException</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -431,19 +455,19 @@ $offset = NULL])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">Array&nbsp;&nbsp;</td>
         <td><b>$where</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Array of where statements. $key =&gt; $val. Only supports `=`</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">int&nbsp;&nbsp;</td>
         <td><b>$limit</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Number of records to limit by</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">int&nbsp;&nbsp;</td>
         <td><b>$offset</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Number of records to offset by</td>
       </tr>
         </table>
     </div><br />
@@ -451,20 +475,23 @@ $offset = NULL])</code>
   </div>
   <hr />
 	<a name="methodlike"></a>
-	<h3>method like <span class="smalllinenumber">[line 225]</span></h3>
+	<h3>method like <span class="smalllinenumber">[line 256]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void like(
-
+		<code>Pipe\Table like(
+string
 $field)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Build LIKE statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Instance of table so calls can be chained</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -477,9 +504,9 @@ $field)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$field</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Use `%` for a wildcard</td>
       </tr>
         </table>
     </div><br />
@@ -487,21 +514,24 @@ $field)</code>
   </div>
   <hr />
 	<a name="methodlimit"></a>
-	<h3>method limit <span class="smalllinenumber">[line 237]</span></h3>
+	<h3>method limit <span class="smalllinenumber">[line 282]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void limit(
-
-$limit, [
+		<code>Pipe\Table limit(
+int
+$limit, [int
 $offset = 0])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Build LIMIT and offset statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Instance of table so calls can be chained</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -514,14 +544,14 @@ $offset = 0])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">int&nbsp;&nbsp;</td>
         <td><b>$limit</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Number to limit by</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">int&nbsp;&nbsp;</td>
         <td><b>$offset</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Number of records to offset by. Defaults to 0</td>
       </tr>
         </table>
     </div><br />
@@ -529,21 +559,25 @@ $offset = 0])</code>
   </div>
   <hr />
 	<a name="methodorder_by"></a>
-	<h3>method order_by <span class="smalllinenumber">[line 231]</span></h3>
+	<h3>method order_by <span class="smalllinenumber">[line 269]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void order_by(
-
+		<code>Pipe\Table order_by(
+string
 $field, [
-$direction = 'ASC'])</code>
+$direction = 'ASC'], string
+$dir)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Build ORDER BY statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Instance of table so calls can be chained</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -556,9 +590,14 @@ $direction = 'ASC'])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$field</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Field to order by</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$dir</b>&nbsp;&nbsp;</td>
+        <td>Direction to order by. Accepts ASC or DESC. Defaults to ASC</td>
       </tr>
           <tr>
         <td class="type">&nbsp;&nbsp;</td>
@@ -571,22 +610,26 @@ $direction = 'ASC'])</code>
   </div>
   <hr />
 	<a name="methodor_where"></a>
-	<h3>method or_where <span class="smalllinenumber">[line 219]</span></h3>
+	<h3>method or_where <span class="smalllinenumber">[line 244]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void or_where(
+		<code>Pipe\Table or_where(
 
-$key, 
-$value, [
-$operator = '='])</code>
+$key, various
+$value, [string
+$operator = '='], string
+$field)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Shorthand for OR WHERE. Wrapper around SQL::where()<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Instance of table so calls can be chained</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -599,18 +642,23 @@ $operator = '='])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$field</b>&nbsp;&nbsp;</td>
+        <td>Field to select</td>
+      </tr>
+          <tr>
+        <td class="type">various&nbsp;&nbsp;</td>
+        <td><b>$value</b>&nbsp;&nbsp;</td>
+        <td>Value to compare against</td>
+      </tr>
+          <tr>
+        <td class="type">string&nbsp;&nbsp;</td>
+        <td><b>$operator</b>&nbsp;&nbsp;</td>
+        <td>Logical operator to use</td>
+      </tr>
+          <tr>
         <td class="type">&nbsp;&nbsp;</td>
         <td><b>$key</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$value</b>&nbsp;&nbsp;</td>
-        <td></td>
-      </tr>
-          <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$operator</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
         </table>
@@ -619,7 +667,7 @@ $operator = '='])</code>
   </div>
   <hr />
 	<a name="methodquery"></a>
-	<h3>method query <span class="smalllinenumber">[line 160]</span></h3>
+	<h3>method query <span class="smalllinenumber">[line 162]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -667,7 +715,7 @@ $values = array()])</code>
   </div>
   <hr />
 	<a name="methodsave"></a>
-	<h3>method save <span class="smalllinenumber">[line 342]</span></h3>
+	<h3>method save <span class="smalllinenumber">[line 430]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -676,10 +724,16 @@ $values = array()])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Either save a new record or update an existing record.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PipeException</td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PDOException</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -692,20 +746,23 @@ $values = array()])</code>
   </div>
   <hr />
 	<a name="methodselect"></a>
-	<h3>method select <span class="smalllinenumber">[line 207]</span></h3>
+	<h3>method select <span class="smalllinenumber">[line 215]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void select(
-
+		<code>Pipe\Table select(
+string|Array
 $select)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Build SELECT statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Instance of table so calls can be chained</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -718,9 +775,9 @@ $select)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string|Array&nbsp;&nbsp;</td>
         <td><b>$select</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Columns to select</td>
       </tr>
         </table>
     </div><br />
@@ -728,19 +785,22 @@ $select)</code>
   </div>
   <hr />
 	<a name="methodstore"></a>
-	<h3>method store <span class="smalllinenumber">[line 327]</span></h3>
+	<h3>method store <span class="smalllinenumber">[line 399]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void store(
+		<code>Array store(
 )</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Returns current store. Used for checking for changes when a save is made.<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>see:</b>&nbsp;&nbsp;</td><td>Pipe\Table::store</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -778,23 +838,26 @@ $select)</code>
   </div>
   <hr />
 	<a name="methodwhere"></a>
-	<h3>method where <span class="smalllinenumber">[line 213]</span></h3>
+	<h3>method where <span class="smalllinenumber">[line 230]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void where(
-
-$field, [
-$value = null], [
-$operator = '='], [
+		<code>Pipe\Table where(
+string
+$field, [various
+$value = null], [string
+$operator = '='], [string
 $type = 'AND'])</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Build WHERE statement<br /><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>return:</b>&nbsp;&nbsp;</td><td>Instance of table so calls can be chained</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -807,24 +870,24 @@ $type = 'AND'])</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$field</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Field to select</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">various&nbsp;&nbsp;</td>
         <td><b>$value</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Value to compare against</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$operator</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Logical operator to use. Defaults to `=`</td>
       </tr>
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
+        <td class="type">string&nbsp;&nbsp;</td>
         <td><b>$type</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td>Joining string for multiple statements. Defaults to `AND`</td>
       </tr>
         </table>
     </div><br />
@@ -832,21 +895,27 @@ $type = 'AND'])</code>
   </div>
   <hr />
 	<a name="method__call"></a>
-	<h3>method __call <span class="smalllinenumber">[line 248]</span></h3>
+	<h3>method __call <span class="smalllinenumber">[line 301]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>void __call(
 
-$method, 
+$method, various
 $args)</code>
     </td></tr></table>
     </td></tr></table><br />
 	
-		<br /><br />
+		Handles get_by_### calls. Append the name of column to the function, to return all the results.<br /><br /><p>Is a wrapper around the where(###, $value, '=')-&gt;get() call.</p><br /><br /><br />
 <h4>Tags:</h4>
 <div class="tags">
 <table border="0" cellspacing="0" cellpadding="0">
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PipeException</td>
+  </tr>
+  <tr>
+    <td><b>throws:</b>&nbsp;&nbsp;</td><td>PDOException</td>
+  </tr>
   <tr>
     <td><b>access:</b>&nbsp;&nbsp;</td><td>public</td>
   </tr>
@@ -859,13 +928,13 @@ $args)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$method</b>&nbsp;&nbsp;</td>
-        <td></td>
+        <td class="type">various&nbsp;&nbsp;</td>
+        <td><b>$args</b>&nbsp;&nbsp;</td>
+        <td>Value of the WHERE statement.</td>
       </tr>
           <tr>
         <td class="type">&nbsp;&nbsp;</td>
-        <td><b>$args</b>&nbsp;&nbsp;</td>
+        <td><b>$method</b>&nbsp;&nbsp;</td>
         <td></td>
       </tr>
         </table>
@@ -877,7 +946,7 @@ $args)</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 18 Dec 2010 19:16:59 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Sat, 18 Dec 2010 20:56:35 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>

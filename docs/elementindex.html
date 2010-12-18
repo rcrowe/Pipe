@@ -82,7 +82,7 @@
 							<dt><b>Connection</b></dt>
 				<dd>in file Connection.php, class <a href="Pipe/Connection.html">Connection</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Pipe Connection</dd>
 							<dt><b>count</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodcount">Table::count()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodcount">Table::count()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Number of records returned from the previous query</dd>
 							<dt><b>Config.php</b></dt>
 				<dd>procedural page <a href="Pipe/_lib---Config.php.html">Config.php</a></dd>
 							<dt><b>Connection.php</b></dt>
@@ -96,7 +96,7 @@
 		<h2>d</h2>
 		<dl>
 							<dt><b>delete</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methoddelete">Table::delete()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methoddelete">Table::delete()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;When an `ID` is present, that record is deleted</dd>
 							<dt><b>destroy</b></dt>
 				<dd>in file Connection.php, method <a href="Pipe/Connection.html#methoddestroy">Connection::destroy()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Destroy static instance of Pipe\Connection</dd>
 							<dt><b>destroy</b></dt>
@@ -116,7 +116,7 @@
 							<dt><b>environment</b></dt>
 				<dd>in file Config.php, method <a href="Pipe/Config.html#methodenvironment">Config::environment()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Environment currently running on. Helper function useful for setting different DSN strings.</dd>
 							<dt><b>exists</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodexists">Table::exists()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodexists">Table::exists()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Whether any records were returned from the last query</dd>
 							<dt><b>Exceptions.php</b></dt>
 				<dd>procedural page <a href="Pipe/_lib---Exceptions.php.html">Exceptions.php</a></dd>
 					</dl>
@@ -130,9 +130,9 @@
 							<dt><b>get</b></dt>
 				<dd>in file SQL.php, method <a href="Pipe/SQL.html#methodget">SQL::get()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Generates the SQL. If get is only method called then will return all records.</dd>
 							<dt><b>get</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodget">Table::get()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodget">Table::get()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Gets the records based on the previous functions called. If only get() is called  returns all records.</dd>
 							<dt><b>get_where</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodget_where">Table::get_where()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodget_where">Table::get_where()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Wrapper around get() and where()</dd>
 					</dl>
 	</div>
 	<a href="elementindex.html#top">top</a><br>
@@ -162,11 +162,11 @@
 							<dt><b>$lastSQL</b></dt>
 				<dd>in file Table.php, variable <a href="Pipe/Table.html#var$lastSQL">Table::$lastSQL</a><br>&nbsp;&nbsp;&nbsp;&nbsp;SQL from the last query</dd>
 							<dt><b>like</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodlike">Table::like()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodlike">Table::like()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Build LIKE statement</dd>
 							<dt><b>like</b></dt>
 				<dd>in file SQL.php, method <a href="Pipe/SQL.html#methodlike">SQL::like()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Build LIKE statement</dd>
 							<dt><b>limit</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodlimit">Table::limit()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodlimit">Table::limit()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Build LIMIT and offset statement</dd>
 							<dt><b>limit</b></dt>
 				<dd>in file SQL.php, method <a href="Pipe/SQL.html#methodlimit">SQL::limit()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Build LIMIT and offset statement</dd>
 					</dl>
@@ -178,11 +178,11 @@
 		<h2>o</h2>
 		<dl>
 							<dt><b>order_by</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodorder_by">Table::order_by()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodorder_by">Table::order_by()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Build ORDER BY statement</dd>
 							<dt><b>order_by</b></dt>
 				<dd>in file SQL.php, method <a href="Pipe/SQL.html#methodorder_by">SQL::order_by()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Build ORDER BY statement</dd>
 							<dt><b>or_where</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodor_where">Table::or_where()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodor_where">Table::or_where()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Shorthand for OR WHERE. Wrapper around SQL::where()</dd>
 							<dt><b>or_where</b></dt>
 				<dd>in file SQL.php, method <a href="Pipe/SQL.html#methodor_where">SQL::or_where()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Builds SQL for shorthand method or_where. Wrapper around SQL::where()</dd>
 					</dl>
@@ -224,15 +224,15 @@
 							<dt><b>SQL.php</b></dt>
 				<dd>procedural page <a href="Pipe/_lib---SQL.php.html">SQL.php</a></dd>
 							<dt><b>save</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodsave">Table::save()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodsave">Table::save()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Either save a new record or update an existing record.</dd>
 							<dt><b>select</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodselect">Table::select()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodselect">Table::select()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Build SELECT statement</dd>
 							<dt><b>select</b></dt>
 				<dd>in file SQL.php, method <a href="Pipe/SQL.html#methodselect">SQL::select()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Columns to select</dd>
 							<dt><b>SQL</b></dt>
 				<dd>in file SQL.php, class <a href="Pipe/SQL.html">SQL</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Builds the SQL statement for a get() request.</dd>
 							<dt><b>store</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodstore">Table::store()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodstore">Table::store()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Returns current store. Used for checking for changes when a save is made.</dd>
 					</dl>
 	</div>
 	<a href="elementindex.html#top">top</a><br>
@@ -268,7 +268,7 @@
 		<h2>w</h2>
 		<dl>
 							<dt><b>where</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#methodwhere">Table::where()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#methodwhere">Table::where()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Build WHERE statement</dd>
 							<dt><b>where</b></dt>
 				<dd>in file SQL.php, method <a href="Pipe/SQL.html#methodwhere">SQL::where()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Build WHERE statement</dd>
 					</dl>
@@ -280,7 +280,7 @@
 		<h2>_</h2>
 		<dl>
 							<dt><b>__call</b></dt>
-				<dd>in file Table.php, method <a href="Pipe/Table.html#method__call">Table::__call()</a></dd>
+				<dd>in file Table.php, method <a href="Pipe/Table.html#method__call">Table::__call()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Handles get_by_### calls. Append the name of column to the function, to return all the results.</dd>
 							<dt><b>__construct</b></dt>
 				<dd>in file Table.php, method <a href="Pipe/Table.html#method__construct">Table::__construct()</a><br>&nbsp;&nbsp;&nbsp;&nbsp;Table constructor. Returns instance of Pipe\Table to query against. If the table does not  exist a PDOException is thrown.</dd>
 							<dt><b>__construct</b></dt>
@@ -290,7 +290,7 @@
 	<a href="elementindex.html#top">top</a><br>
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 18 Dec 2010 19:16:59 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Sat, 18 Dec 2010 20:56:34 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
