@@ -8,6 +8,7 @@
  * @author      Robert Crowe <hello@vivalacrowe.com>
  * @link        http://vivalacrowe.com
  * @copyright   2010 Robert Crowe
+ * @package     Pipe
  *
  * Permission is hereby granted, free of charge, to any person obtaining
  * a copy of this software and associated documentation files (the
@@ -34,7 +35,8 @@ namespace Pipe;
 /**
  * Pipe Config
  *
- * Config object is responsible for storing all the configuration used to setup a connection to the database, as well as a few helpers.
+ * Config object is responsible for storing all the configuration used to setup a connection to the database,
+ * as well as a few helpers.
  *
  * @package     Pipe
  * @author      Robert Crowe <hello@vivalacrowe.com>
