@@ -31,6 +31,19 @@ class PipeTests extends UnitTestCase
         $this->assertIdentical($dsn, DSN);
     }
     
+    //Test mysql:// is prepended if ommitted
+    function testMySQLPrepended()
+    {
+        $subcon = substr(DSN, 8);
+        
+        Pipe::initialise(function($cfg){
+           $cfg->connection($subcon);
+        });
+        
+        $dsn = Pipe\Config::instance()->connection();
+        $this->assertIdentical($dsn, DSN);
+    }
+    
     //Test we can see what environment we are running on
     //Useful for setting different DSNs
     function testEnvironment()
