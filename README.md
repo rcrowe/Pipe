@@ -23,7 +23,7 @@ Example
     require 'Pipe.php';
     
     Pipe::initialize(function($cfg){
-       $cfg->connection('mysql://root:root@localhost/project');
+       $cfg->connection('username:password@host/table');
     });
     
     //Select the `users` table
