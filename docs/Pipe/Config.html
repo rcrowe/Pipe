@@ -233,7 +233,7 @@ Pipe Config<br /><br /><p>Config object is responsible for storing all the confi
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
 		<code>static void initialise(
-Closure
+string|Closure
 $config)</code>
     </td></tr></table>
     </td></tr></table><br />
@@ -254,9 +254,9 @@ $config)</code>
     <div class="tags">
     <table border="0" cellspacing="0" cellpadding="0">
           <tr>
-        <td class="type">Closure&nbsp;&nbsp;</td>
+        <td class="type">string|Closure&nbsp;&nbsp;</td>
         <td><b>$config</b>&nbsp;&nbsp;</td>
-        <td>Closure with single parameter. Passed instance of Pipe\Config.</td>
+        <td>DSN or Closure with single parameter. Closure is passed instance of Pipe\Config.</td>
       </tr>
         </table>
     </div><br />
@@ -290,11 +290,11 @@ $config)</code>
 
   <hr />
 	<a name="methodconnection"></a>
-	<h3>method connection <span class="smalllinenumber">[line 128]</span></h3>
+	<h3>method connection <span class="smalllinenumber">[line 135]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
-		<code>void connection(
+		<code>string connection(
 [string
 $dsn = null])</code>
     </td></tr></table>
@@ -326,7 +326,7 @@ $dsn = null])</code>
   </div>
   <hr />
 	<a name="methodenvironment"></a>
-	<h3>method environment <span class="smalllinenumber">[line 150]</span></h3>
+	<h3>method environment <span class="smalllinenumber">[line 157]</span></h3>
 	<div class="function">
     <table width="90%" border="0" cellspacing="0" cellpadding="1"><tr><td class="code_border">
     <table width="100%" border="0" cellspacing="0" cellpadding="2"><tr><td class="code">
@@ -379,7 +379,7 @@ $dsn = null])</code>
 
         <div class="credit">
 		    <hr />
-		    Documentation generated on Sat, 18 Dec 2010 20:56:34 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
+		    Documentation generated on Tue, 21 Dec 2010 22:31:35 +0000 by <a href="http://www.phpdoc.org">phpDocumentor 1.4.3</a>
 	      </div>
       </td></tr></table>
     </td>
