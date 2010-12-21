@@ -94,6 +94,16 @@ class PipeTests extends UnitTestCase
         
         $this->assertIdentical($instance->updated_field, 'updated_on');
     }
+    
+    //Test just parsing in a connection string, not a closure. Makes things a lot simpler
+    //@since 0.7.1
+    function testInitialiseWithStringNotClosure()
+    {
+       Pipe::initialise(DSN);
+
+       $dsn = Pipe\Config::instance()->connection();
+       $this->assertIdentical($dsn, DSN);
+    }
 }
 
 ?>

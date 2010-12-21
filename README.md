@@ -22,9 +22,7 @@ Example
     
     require 'Pipe.php';
     
-    Pipe::initialize(function($cfg){
-       $cfg->connection('username:password@host/table');
-    });
+    Pipe::initialize('username:password@host/table');
     
     //Select the `users` table
     $users = Pipe::table('users');

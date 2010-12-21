@@ -109,21 +109,28 @@ class Config
     /**
      * Provides closure to main Pipe wrapper.
      *
-     * @param Closure $config Closure with single parameter. Passed instance of Pipe\Config.
+     * @param string|Closure $config DSN or Closure with single parameter. Closure is passed instance of Pipe\Config.
      * @return void
      */
     public static function initialise($config)
     {
         $instance = self::instance();
-       
-        $config($instance);
+
+        if(is_object($config) && (get_class($config) === 'Closure'))
+        {
+           $config($instance);
+        }
+        else
+        {
+           $instance->connection($config);
+        }
     }
     
     /**
      * Set DSN used to connect to database with. Appends mysql:// to DSN if omitted.
      *
      * @param string $dsn DSN to connect with
-     * @return void
+     * @return string
      */
     public function connection($dsn = null)
     {
